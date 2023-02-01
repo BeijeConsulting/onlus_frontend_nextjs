@@ -1,11 +1,11 @@
-footer {
+.container {
   font-size: 16px;
   display: flex;
   flex-direction: column;
   gap: 30px;
   padding: 50px 20px 20px 20px;
 
-  .top-footer{
+  .topFooter{
     display: grid;
     gap: 30px;
 
@@ -29,7 +29,7 @@ footer {
       align-items: center;
       justify-content: center;
       gap: 30px;
-      .social-container{
+      .socialContainer{
         display: flex;
         gap: 30px;
       }
@@ -59,11 +59,11 @@ footer {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  footer {
+  .container {
     padding: 50px 50px 30px 50px;
     align-items: center;
 
-    .top-footer{
+    .topFooter{
       align-items: center;
 
       .contacts{
@@ -78,11 +78,11 @@ footer {
 }
 
 @media only screen and (min-width: 992px) {
-  footer {
+  .container {
     font-size: 18px;
     padding: 100px 100px 30px 100px;
     gap: 50px;
-    .top-footer{
+    .topFooter{
       grid-template-columns: repeat(4, 1fr);
       gap: 0;
       section{
@@ -93,7 +93,7 @@ footer {
       }
 
       .social{
-        .social-container{
+        .socialContainer{
           flex-direction: column;
           align-items: center;
           .iconContainer {
@@ -125,7 +125,7 @@ footer {
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-end;
-        .privacy-container{
+        .privacyContainer{
           p{
             padding-bottom: 15px;
             text-align: right;
@@ -135,26 +135,4 @@ footer {
 
     }
   }
-
-  //   .privacy {
-  //     gap: 35px;
-  //     text-align: end;
-  //     margin-top: 0;
-
-  //     a {
-  //       text-decoration: underline;
-  //     }
-  //   }
-
-  //   .buttonContainer {
-  //     display: flex;
-  //     margin-top: 0;
-  //     justify-content: flex-end;
-  //   }
-
-  //   .rightReserved {
-  //     font-size: 14px;
-  //     bottom: 10px;
-  //   }
-  // }
 }

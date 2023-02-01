@@ -1,4 +1,4 @@
-.header {
+.container {
   padding: 20px;
   position: fixed;
   top: 0;
@@ -6,17 +6,17 @@
   right: 0;
   z-index: 99;
   transition: all 0.5s ease;
-  .bottom-header {
+  .bottomHeader {
     display: none;
   }
   &.home {
     background-color: transparent;
-    .bottom-header {
+    .bottomHeader {
       display: flex;
       align-items: center;
       justify-content: center;
       padding-top: 20px;
-      .bottom-header-button {
+      .bottomHeaderButton {
         font-size: 16px;
         font-weight: 400;
         padding: 0 10px;
@@ -29,7 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .nav-desktop {
+    .navDesktop {
       display: flex;
       p {
         cursor: pointer;
@@ -48,16 +48,16 @@
     }
   }
 }
-.lng-buttons {
+.lngButtons {
   display: flex;
   align-items: center;
-  .lng-separator{
+  .lngSeparator{
     padding: 0 10px;
   }
   .langButton {
     cursor: pointer;
     font-weight: 300;
-    &.active-lng {
+    &.activeLng {
       font-weight: 700;
     }
   }
@@ -67,33 +67,31 @@
   width: 50px;
   height: 50px;
   cursor: pointer;
-  img{
-    height: 50px;
-  }
+  position: relative;
 }
 
-.profile-icon {
+.profileIcon {
   height: 24px;
   width: auto;
   margin: 20px;
   cursor: pointer;
 }
 
-.header-right {
+.headerRight {
   display: flex;
   align-items: center;
 }
 
 @media (min-width: 992px) {
-  .header {
+  .container {
     padding: 20px 50px;
-    .top-header {
+    .topHeader {
       padding-left: 0;
     }
   }
 
-  .nav-desktop,
-  .bottom-header-button {
+  .navDesktop,
+  .bottomHeaderButton {
     a{
       position: relative;
     }
@@ -119,7 +117,8 @@
 }
 
 @media(min-width: 1050px){
-  .logo {
+  .logoContainer{
     width: 124.66px;
   }
+  
 }

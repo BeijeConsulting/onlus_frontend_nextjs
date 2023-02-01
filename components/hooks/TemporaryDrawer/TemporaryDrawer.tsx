@@ -131,18 +131,15 @@ const TemporaryDrawer: FC = () => {
             disablePadding
           >
             <ListItemButton>
-              <ListItemText
-                sx={{
-                  borderBottom: `1px solid ${hexToRGB(
-                    PALETTE[0].textColor,
-                    0.5
-                  )}`,
+              <div
+                style={{
+                  borderBottom: `0.5px solid ${PALETTE[0].textColor} `,
                 }}
                 className={styles.navItem}
                 onClick={navigationFromSidebar(text)}
               >
                 <Typography variant="body2">{text}</Typography>
-              </ListItemText>
+              </div>
             </ListItemButton>
           </ListItem>
         ))}

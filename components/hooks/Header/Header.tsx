@@ -1,5 +1,8 @@
 import { FC, useState, useEffect, useRef } from "react"
 
+//next
+import Image from "next/image"
+
 //navigation
 import { useRouter } from "next/navigation"
 import SCREENS from "@/route/router"
@@ -40,6 +43,9 @@ import { useSelector, useDispatch } from "react-redux"
 
 // type
 import { color } from "../../../utils/type"
+
+// img
+import logo from "../../../giraffeImg.jpg"
 
 interface HeaderProps {
   isHome?: boolean
@@ -165,8 +171,10 @@ const Header: FC<HeaderProps> = (props) => {
     <header
       className={
         (state.scroll ? styles.active : "") +
-        (props.isHome && "home") +
-        styles.header
+        " " +
+        (props.isHome ? styles.home : "") +
+        " " +
+        styles.container
       }
       style={
         props.isHome
@@ -175,8 +183,10 @@ const Header: FC<HeaderProps> = (props) => {
       }
     >
       <div className={styles.topHeader}>
-        <div className={styles.logo}>
-          <img src={LOGO} alt="" onClick={goTo(SCREENS.home)} />
+        <div className={styles.logoContainer}>
+          <div className={styles.logo}>
+            <Image fill src={logo} alt="" onClick={goTo(SCREENS.home)} />
+          </div>
         </div>
         <DesktopContainer>
           <nav className={styles.navDesktop}>
@@ -240,6 +250,9 @@ const Header: FC<HeaderProps> = (props) => {
               </Typography>
             </NavLink>
           </nav>
+        </DesktopContainer>
+
+        <DesktopContainer>
           <ExpandButton />
         </DesktopContainer>
 

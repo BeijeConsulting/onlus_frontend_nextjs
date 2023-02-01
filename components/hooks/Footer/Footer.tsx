@@ -76,13 +76,17 @@ const Footer: FC = () => {
     }
   }
   return (
-    <footer style={{ backgroundColor: PALETTE[0].bgColor }} id="footer">
-      <div className="top-footer">
+    <footer
+      className={styles.container}
+      style={{ backgroundColor: PALETTE[0].bgColor }}
+      id="footer"
+    >
+      <div className={styles.topFooter}>
         <section
           style={{ borderRightColor: hexToRGB(PALETTE[0].textColor, 0.3) }}
-          className="contacts"
+          className={styles.contacts}
         >
-          <Typography variant="h5" className="titleContacts">
+          <Typography variant="h5" className={styles.titleContacts}>
             {t("footer.contacts")}
           </Typography>
           <ul>
@@ -110,9 +114,9 @@ const Footer: FC = () => {
 
         <section
           style={{ borderRightColor: hexToRGB(PALETTE[0].textColor, 0.3) }}
-          className="social"
+          className={styles.social}
         >
-          <div className="social-container">
+          <div className={styles.socialContainer}>
             {!!SOCIAL && SOCIAL.map(mapping)}
           </div>
           {!isLogged && (
@@ -130,7 +134,7 @@ const Footer: FC = () => {
         <DesktopContainer>
           <section
             style={{ borderRightColor: hexToRGB(PALETTE[0].textColor, 0.3) }}
-            className="nav"
+            className={styles.nav}
           >
             <Typography variant="body2" onClick={goTo(SCREENS.home)}>
               {t("nav.home")}
@@ -153,8 +157,8 @@ const Footer: FC = () => {
           </section>
         </DesktopContainer>
 
-        <section className="privacy">
-          <div className="privacy-container">
+        <section className={styles.privacy}>
+          <div className={styles.privacyContainer}>
             <Link href="#">
               <Typography variant="body2">{t("privacyPolicy")} </Typography>
             </Link>
@@ -178,7 +182,7 @@ const Footer: FC = () => {
         </section>
       </div>
 
-      <Typography variant="body2" className="rightReserved">
+      <Typography variant="body2" className={styles.rightReserved}>
         {t("rightReserved")}
       </Typography>
     </footer>
