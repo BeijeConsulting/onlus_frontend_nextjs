@@ -1,0 +1,43 @@
+.boxContainer {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 6fr 2fr;
+  align-items: center;
+  overflow-x: hidden;
+}
+.burgerIcons {
+  width: 24px;
+  height: 24px;
+}
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-top: 50px;
+}
+
+.socialIcons {
+  height: 20px;
+  width: auto;
+}
+.navItemContainer {
+  > div:first-child {
+    padding: 0;
+  }
+}
+.navItem {
+  font-size: 20px;
+  text-transform: uppercase;
+  padding: 20px;
+}
+.buttonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.closeButton {
+  position: fixed;
+  top: 30px;
+  right: 20px;
+}

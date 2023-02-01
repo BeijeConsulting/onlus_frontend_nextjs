@@ -1,0 +1,54 @@
+@import '../../../styles/common.scss';
+
+.eventsCard{
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 3fr 8fr;
+    gap: 30px;
+
+    .cardHeader{
+        .cardTitle{
+            padding-bottom: 20px;
+        }
+        .cardMedia{
+            height: 300px;
+            width: 100%;
+        }
+    }
+
+    .cardContent{
+        padding: 0;
+        display: grid;
+        grid-template-columns: 8fr 2fr;
+        gap: 30px;
+        .cardContentSection{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            h4{
+                padding-bottom: 10px;
+            }
+        }
+
+        .cardContentSectionScroll{
+            overflow-y: scroll;
+            padding-right: 20px;
+            &::-webkit-scrollbar {
+                width: 5px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: $primary;
+            }
+        }
+
+        .cardContentSectionRight{
+            align-items: flex-end;
+            height: 100%;
+            justify-content: space-between;
+        }
+
+        .cardInfo p{
+            text-align: right;
+        }
+    }
+}

@@ -1,0 +1,125 @@
+.header {
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  transition: all 0.5s ease;
+  .bottom-header {
+    display: none;
+  }
+  &.home {
+    background-color: transparent;
+    .bottom-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 20px;
+      .bottom-header-button {
+        font-size: 16px;
+        font-weight: 400;
+        padding: 0 10px;
+        cursor: pointer;
+      }
+    }
+  }
+  .topHeader {
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .nav-desktop {
+      display: flex;
+      p {
+        cursor: pointer;
+        padding: 0 10px;
+        white-space: nowrap;
+      }
+      .active {
+        p .underline {
+          display: block;
+          height: 2px;
+          border-radius: 5px;
+          transition: width 0.3s ease-in-out;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+.lng-buttons {
+  display: flex;
+  align-items: center;
+  .lng-separator{
+    padding: 0 10px;
+  }
+  .langButton {
+    cursor: pointer;
+    font-weight: 300;
+    &.active-lng {
+      font-weight: 700;
+    }
+  }
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  img{
+    height: 50px;
+  }
+}
+
+.profile-icon {
+  height: 24px;
+  width: auto;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .header {
+    padding: 20px 50px;
+    .top-header {
+      padding-left: 0;
+    }
+  }
+
+  .nav-desktop,
+  .bottom-header-button {
+    a{
+      position: relative;
+    }
+    p{
+      .underline{
+        display: block;
+        height: 2px;
+        border-radius: 5px;
+        width: 0%;
+        transition: width 0.3s ease-in-out;
+        
+      }
+    &:hover {
+      .underline{
+        width: 100%;
+        opacity: 100%;
+      }
+    }
+  }
+    
+    
+  }
+}
+
+@media(min-width: 1050px){
+  .logo {
+    width: 124.66px;
+  }
+}

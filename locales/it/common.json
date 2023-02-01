@@ -1,0 +1,19 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Chi siamo",
+    "events": "Eventi",
+    "blog": "Blog",
+    "supportUs": "Supportaci",
+    "info": "Informazioni",
+    "logout": "Esci",
+    "logoutSentence": "Sei sicuro di voler uscire dal tuo account?"
+  },
+  "footer": {
+    "contacts": "Contatti",
+    "terms": "Termini e condizioni",
+    "privacyPolicy": "Privacy policy",
+    "cookiePolicy": "Cookie policy",
+    "rightReserved": "© Onlus - 2022 - All rights reserved"
+  }
+}

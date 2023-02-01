@@ -13,7 +13,7 @@ export const setGeneral = (obj) => (dispatch) => {
 const generalDuck = createSlice({
   name: "generalDuck",
   initialState: {
-    websiteName: "Panda",
+    websiteName: "Onlus",
     logoContent: "nomeImmagine", //nome immagine da abbinare a path predefinito
     palette: [
       {

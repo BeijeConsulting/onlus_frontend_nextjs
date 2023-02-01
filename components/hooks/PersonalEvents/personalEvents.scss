@@ -1,0 +1,36 @@
+.eventsSection {
+  .txt {
+    font-size: 1.5rem;
+  }
+
+  .singleCardContainer {
+    margin-bottom: 20px;
+  }
+}
+
+.eventSection:first-child{
+  padding-bottom: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .eventsSection {
+    .cardsContainer {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: stretch;
+      gap: 50px;
+    }
+    .singleCardContainer {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .eventsSection {
+    padding: 76px 0 76px 76px;
+  }
+  .eventSection:first-child{
+    padding-bottom: 50px;
+  }
+}

@@ -1,0 +1,43 @@
+#prefooter {
+  display: flex;
+  flex-direction: row;
+  background-color: #eaeaea;
+  padding: 20px 20px;
+  justify-content: center;
+  align-items: center;
+
+  .logo {
+    img {
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .infoContact {
+    text-align: center;
+    flex-direction: column;
+    font-size: 16px;
+  }
+
+  .logo,
+  .infoContact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #prefooter {
+    height: fit-content;
+    width: auto;
+    padding: 40px 40px;
+    align-items: center;
+    flex-direction: row;
+    display: flex;
+
+    .infoContact {
+      font-size: 20px;
+    }
+  }
+}
