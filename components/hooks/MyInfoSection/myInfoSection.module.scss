@@ -1,15 +1,15 @@
-.myInfo-container {
+.myInfoContainer {
   display: flex;
   justify-content: center;
 }
 
-.my-input-container {
+.myInputContainer {
   display: grid;
   margin-bottom: 10px;
   gap: 10px;
 }
 
-.buttons-container {
+.buttonsContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,10 +17,10 @@
 }
 
 @media only screen and (min-width: 992px) {
-  .myInfo-container {
+  .myInfoContainer {
     padding: 76px 0 76px 76px;
   }
-  .buttons-container {
+  .buttonsContainer {
     flex-direction: row;
     justify-content: center;
     align-items: center;

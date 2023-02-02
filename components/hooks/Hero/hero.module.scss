@@ -1,37 +1,35 @@
-@import url("../../../styles/common.scss");
-
-.hero-container {
+.heroContainer {
   width: 100vw;
   padding: 20px;
   position: relative;
   display: flex;
-  .hero-content {
+  .heroContent {
     position: relative;
     z-index: 9;
     padding: 20px;
   }
 
-  .hero-subtitle {
+  .heroSubtitle {
     padding-bottom: 30px;
   }
 
-  .hero-categories{
+  .heroCategories{
     display: flex;
     margin: 0 -15px;
   }
-  .hero-category {
+  .heroCategory {
     margin-bottom: 15px;
     padding: 0 15px;
     text-transform: uppercase;
   }
 
-  .hero-linebr {
+  .heroLinebr {
     width: 80%;
     height: 3px;
     margin: 25px 0;
   }
 
-  .hero-overlay {
+  .heroOverlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -43,7 +41,7 @@
   }
 }
 
-.hero-container-home {
+.heroContainerHome {
   flex-direction: column;
   justify-content: center;
   height: 100vh;
@@ -51,7 +49,7 @@
     height: 100vh;
   }
 }
-.hero-container-article {
+.heroContainerArticle {
   flex-direction: column;
   justify-content: flex-end;
   height: calc(100vh - 104px);
@@ -59,7 +57,7 @@
     height: calc(100vh - 104px);
   }
 }
-.hero-container-about {
+.heroContainerAbout {
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -67,27 +65,27 @@
   &:after {
     height: calc(100vh - 104px);
   }
-  .hero-content{
+  .heroContent{
     margin: 0 auto;
   }
 }
 
 @media (min-width: 768px) {
-  .hero-container {
+  .heroContainer {
     padding: 50px;
-    .hero-content {
+    .heroContent {
       width: 50vw;
       padding: 50px;
-      .hero-subtitle {
+      .heroSubtitle {
         padding-bottom: 50px;
       }
-      .hero-category {
+      .heroCategory {
         margin-bottom: 18px;
       }
     }
   }
 
-  .hero-container-about{
+  .heroContainerAbout{
     .hero-content{
       width: 80vw;
     }
@@ -95,19 +93,19 @@
 }
 
 @media (min-width: 992px) {
-  .hero-container {
+  .heroContainer {
     padding: 50px;
-    .hero-content {
+    .heroContent {
       padding: 100px;
       width: 50vw;
-      .hero-subtitle {
+      .heroSubtitle {
         padding-bottom: 50px;
       }
     }
   }
 
-  .hero-container-about{
-    .hero-content{
+  .heroContainerAbout{
+    .heroContent{
       width: 80vw;
     }
   }

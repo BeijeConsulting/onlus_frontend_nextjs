@@ -2,7 +2,8 @@
 import { ReactElement, useState, useEffect } from "react"
 
 //navigation
-import { useNavigate, NavigateFunction, Link } from "react-router-dom"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
 import SCREENS from "../../../route/router"
 
 //mui
@@ -12,7 +13,7 @@ import { Typography, Skeleton } from "@mui/material"
 import CustomButton from "../../ui/buttons/CustomButton/CustomButton"
 
 //Style
-import "./joinUsBox.scss"
+import styles from "./joinUsBox.module.scss"
 
 //type
 import { joinUs, color } from "../../../utils/type"
@@ -35,7 +36,7 @@ const initialState = {
 }
 
 function JoinUs(props: Props): ReactElement {
-  const navigate: NavigateFunction = useNavigate()
+  const router: any = useRouter()
   const [state, setState] = useState<State>(initialState)
 
   const BANNER: any = useSelector((state: any) => state.generalDuck.banner)
@@ -49,11 +50,11 @@ function JoinUs(props: Props): ReactElement {
   }, [])
 
   function goToDonations(): void {
-    navigate(SCREENS.donate)
+    router.push(SCREENS.donate)
   }
 
   function goToJoin(): void {
-    navigate(SCREENS.signup)
+    router.push(SCREENS.signup)
   }
 
   async function getData(): Promise<void> {
@@ -64,21 +65,24 @@ function JoinUs(props: Props): ReactElement {
   }
 
   return (
-    <article className="joinUsBox" style={{ background: PALETTE[0].bgColor }}>
+    <article
+      className={styles.joinUsBox}
+      style={{ background: PALETTE[0].bgColor }}
+    >
       {state.isLoaded ? (
         <>
-          <section className="upperSection">
+          <section className={styles.upperSection}>
             <Typography sx={{ color: PALETTE[0].textColor }} variant="h1">
               {state.data!.title}
             </Typography>
             <div
               style={{ background: PALETTE[0].textColor }}
-              className="separator"
+              className={styles.separator}
             ></div>
             <Typography variant="h5">{state.data!.subtitle}</Typography>
           </section>
-          <div className="buttons">
-            <div className="btn1">
+          <div className={styles.buttons}>
+            <div className={styles.btn1}>
               <CustomButton
                 colorType="secondary"
                 label={state.data!.btnText1}
@@ -87,7 +91,7 @@ function JoinUs(props: Props): ReactElement {
               />
             </div>
             {props.supportBox && (
-              <div className="btn2">
+              <div className={styles.btn2}>
                 <CustomButton
                   colorType="success"
                   label={state.data!.btnText2}
@@ -98,11 +102,11 @@ function JoinUs(props: Props): ReactElement {
             )}
           </div>
           {props.supportBox && (
-            <section className="lowerSection">
+            <section className={styles.lowerSection}>
               <Link
                 style={{ color: PALETTE[0].textColor }}
-                to={SCREENS.support}
-                className="supportLink"
+                href={SCREENS.support}
+                className={styles.supportLink}
               >
                 <Typography variant="body2">{state.data!.link}</Typography>
               </Link>

@@ -12,7 +12,7 @@ import FormControl from "@mui/material/FormControl"
 import FormHelperText from "@mui/material/FormHelperText"
 
 //style
-import "./inputBox.scss"
+import styles from "./inputBox.module.scss"
 
 interface InputBoxProps {
   label: string
@@ -75,7 +75,7 @@ const InputBox: FC<InputBoxProps> = (props) => {
               {props.label}
             </InputLabel>
             <OutlinedInput
-              id="outlined-adornment-password"
+              id={styles.outlinedAdornmentPassword}
               type={state.showPassword ? "text" : "password"}
               size={"small"}
               onChange={change}
@@ -110,7 +110,7 @@ const InputBox: FC<InputBoxProps> = (props) => {
             label={props.label}
             type={props.type}
             size="small"
-            id="custom-css-outlined-input"
+            id={styles.customCssOutlinedInput}
             onChange={change}
             defaultValue={props.defaultValue}
             required={props.isRequired}

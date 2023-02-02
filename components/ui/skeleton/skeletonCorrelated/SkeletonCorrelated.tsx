@@ -1,18 +1,18 @@
-import { FC } from "react";
+import { FC } from "react"
 //mui
-import { Skeleton } from "@mui/material";
+import { Skeleton } from "@mui/material"
 
 //style
-import "./skeletonCorrelated.scss";
+import styles from "./skeletonCorrelated.module.scss"
 
 const SkeletonCorrelated: FC = () => {
   return (
-    <div className="skeletonCorrelated-container">
-      <div className="imageSkeleton-container">
+    <div className={styles.skeletonCorrelatedContainer}>
+      <div className={styles.imageSkeletonContainer}>
         <Skeleton variant="rectangular" animation="wave" height={"100%"} />
       </div>
-      <div className="textSkeleton-container">
-        <div className="textBody">
+      <div className={styles.textSkeletonContainer}>
+        <div className={styles.textBody}>
           <Skeleton variant="text" animation="wave" width={"80%"} />
           <Skeleton variant="text" animation="wave" width={"80%"} />
           <Skeleton variant="text" animation="wave" width={"80%"} />
@@ -23,7 +23,7 @@ const SkeletonCorrelated: FC = () => {
         <Skeleton variant="text" animation="wave" width={"40%"} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SkeletonCorrelated;
+export default SkeletonCorrelated

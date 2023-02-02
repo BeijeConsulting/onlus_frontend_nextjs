@@ -4,15 +4,17 @@ import { ReactElement, useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 
 //style
-import "./donationHistory.scss"
+import styles from "./donationHistory.module.scss"
 
 //i18n
-import { useTranslation } from "react-i18next"
+import useTranslation from "next-translate/useTranslation"
 
 //type
 import { donation, color } from "../../../utils/type"
+
 // convertdate
 import { convertDate } from "../../../utils/convertDate"
+
 //mui
 import { Typography } from "@mui/material"
 
@@ -47,7 +49,7 @@ function DonationHistory(props: Props): ReactElement {
     return (
       <div
         key={key}
-        className="singleDonation"
+        className={styles.singleDonation}
         style={{ borderBottomColor: hexToRGB(PALETTE[2].textColor, 0.3) }}
       >
         <span>{`${convertDate(element.donationDate, t("dateFormat"))}`}</span>
@@ -57,21 +59,21 @@ function DonationHistory(props: Props): ReactElement {
   }
 
   return (
-    <article className="donationsSection">
-      <section className="windowBox">
-        <div className="donationTotal">
+    <article className={styles.donationsSection}>
+      <section className={styles.windowBox}>
+        <div className={styles.donationTotal}>
           <Typography variant="body1">
             {t("personalArea.totalDonated")}
 
-            <span className="bigNumber">{`${state}€`}</span>
+            <span className={styles.bigNumber}>{`${state}€`}</span>
           </Typography>
         </div>
-        <div className="titleHistory">
+        <div className={styles.titleHistory}>
           <Typography variant="h3">
             {t("personalArea.donationsHistory")}
           </Typography>
         </div>
-        <section className="donations">
+        <section className={styles.donations}>
           <Typography variant="body1">{props.datas?.map(mapping)}</Typography>
         </section>
       </section>

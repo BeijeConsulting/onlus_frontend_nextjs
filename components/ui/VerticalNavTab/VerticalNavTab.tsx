@@ -90,24 +90,24 @@ export default function VerticalTabs(props: LocalProps) {
         aria-label="Vertical tabs example"
         textColor="primary"
         indicatorColor="primary"
-        sx={{
+        style={{
           borderRight: 1,
           borderColor: "divider",
           paddingTop: "24px",
         }}
       >
         <Tab
-          sx={{ color: hexToRGB(PALETTE[2].textColor, 0.7) }}
+          style={{ color: hexToRGB(PALETTE[2].textColor, 0.7) }}
           label={props.pages[0]}
           {...a11yProps(0)}
         />
         <Tab
-          sx={{ color: hexToRGB(PALETTE[2].textColor, 0.7) }}
+          style={{ color: hexToRGB(PALETTE[2].textColor, 0.7) }}
           label={props.pages[1]}
           {...a11yProps(1)}
         />
         <Tab
-          sx={{ color: hexToRGB(PALETTE[2].textColor, 0.7) }}
+          style={{ color: hexToRGB(PALETTE[2].textColor, 0.7) }}
           label={props.pages[2]}
           {...a11yProps(2)}
         />

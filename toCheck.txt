@@ -1,0 +1,6 @@
+file da controllare
+    -inputBox.scss
+    -VerticalNavTab solo sx
+    -NavTab solo sx
+    -CardArticle solo sx
+    -riga 271 di myInfosection.tsx

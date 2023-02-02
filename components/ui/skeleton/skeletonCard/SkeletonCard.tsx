@@ -1,18 +1,18 @@
-import { FC } from "react";
+import { FC } from "react"
 
 //mui
-import { Skeleton } from "@mui/material";
+import { Skeleton } from "@mui/material"
 
 //style
-import "./skeletoncard.scss";
+import styles from "./skeletoncard.module.scss"
 
 const SkeletonCard: FC = () => {
   return (
-    <div id="skeletonCard">
-      <div className="titleText">
+    <div id={styles.skeletonCard}>
+      <div className={styles.titleText}>
         <Skeleton variant="text" animation="wave" width={"30%"} />
       </div>
-      <div className="image">
+      <div className={styles.image}>
         <Skeleton
           variant="rectangular"
           animation="wave"
@@ -20,14 +20,14 @@ const SkeletonCard: FC = () => {
           height={"100%"}
         />
       </div>
-      <div className="bodyText">
+      <div className={styles.bodyText}>
         <Skeleton variant="text" animation="wave" />
         <Skeleton variant="text" animation="wave" />
         <Skeleton variant="text" animation="wave" />
         <Skeleton variant="text" animation="wave" />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SkeletonCard;
+export default SkeletonCard

@@ -1,7 +1,7 @@
 import { FC } from "react"
 
 //navigation
-import { useNavigate } from "react-router-dom"
+import { useRouter } from "next/navigation"
 import SCREENS from "../../../route/router"
 
 // redux
@@ -14,7 +14,7 @@ import CustomButton from "../../ui/buttons/CustomButton/CustomButton"
 import { Typography } from "@mui/material"
 
 //style
-import "./hero.scss"
+import styles from "./hero.module.scss"
 
 // type
 import { color } from "../../../utils/type"
@@ -28,21 +28,23 @@ interface HeroProps {
 }
 
 const Hero: FC<HeroProps> = (props) => {
-  const navigate: Function = useNavigate()
+  const router: any = useRouter()
 
   const PALETTE: Array<color> = useSelector(
     (state: any) => state.generalDuck.palette
   )
 
   function handleNavigate() {
-    props.type === "home" ? navigate(SCREENS.donate) : navigate(SCREENS.signup)
+    props.type === "home"
+      ? router.push(SCREENS.donate)
+      : router.push(SCREENS.signup)
   }
 
   switch (props.type) {
     case "home" || "support":
       return (
         <section
-          className="hero-container hero-container-home"
+          className={styles.heroContainer + " " + styles.heroContainerHome}
           style={{
             backgroundImage: `url("${props.image}")`,
             backgroundRepeat: "no-repeat",
@@ -51,18 +53,18 @@ const Hero: FC<HeroProps> = (props) => {
           }}
         >
           <div
-            className="hero-overlay"
+            className={styles.heroOverlay}
             style={{ background: "rgba(0,0,0,0.5)" }}
           >
-            <div className="hero-content">
+            <div className={styles.heroContent}>
               <Typography variant="h1" sx={{ color: PALETTE[0].textColor }}>
                 {props.title}
               </Typography>
               <div
-                className="hero-linebr"
+                className={styles.heroLinebr}
                 style={{ background: PALETTE[0].textColor }}
               />
-              <Typography variant="h5" className="hero-subtitle">
+              <Typography variant="h5" className={styles.heroSubtitle}>
                 {props.subtitle}
               </Typography>
               {props.type === "home" ? (
@@ -89,7 +91,7 @@ const Hero: FC<HeroProps> = (props) => {
       return (
         <>
           <section
-            className="hero-container hero-container-article"
+            className={styles.heroContainer + " " + styles.heroContainerArticle}
             style={{
               backgroundImage: `url("${props.image}")`,
               backgroundRepeat: "no-repeat",
@@ -98,11 +100,11 @@ const Hero: FC<HeroProps> = (props) => {
             }}
           >
             <div
-              className="hero-overlay"
+              className={styles.heroOverlay}
               style={{ background: "rgba(0,0,0,0.5)" }}
             >
-              <div className="hero-content">
-                <div className="hero-categories">{props.category}</div>
+              <div className={styles.heroContent}>
+                <div className={styles.heroCategory}>{props.category}</div>
                 <Typography variant="h1" sx={{ color: PALETTE[0].textColor }}>
                   {props.title}
                 </Typography>
@@ -116,7 +118,7 @@ const Hero: FC<HeroProps> = (props) => {
       return (
         <>
           <section
-            className="hero-container hero-container-about"
+            className={styles.heroContainer + " " + styles.heroContainerAbout}
             style={{
               backgroundImage: `url("${props.image}")`,
               backgroundRepeat: "no-repeat",
@@ -125,10 +127,10 @@ const Hero: FC<HeroProps> = (props) => {
             }}
           >
             <div
-              className="hero-overlay"
+              className={styles.heroOverlay}
               style={{ background: "rgba(0,0,0,0.5)" }}
             >
-              <div className="hero-content">
+              <div className={styles.heroContent}>
                 <Typography variant="h1" sx={{ color: PALETTE[0].textColor }}>
                   {props.title}
                 </Typography>

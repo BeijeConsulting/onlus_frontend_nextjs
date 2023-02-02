@@ -11,10 +11,14 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 
 // components
 import CustomButton from "../../ui/buttons/CustomButton/CustomButton"
+
 // translation
-import { useTranslation } from "react-i18next"
+import useTranslation from "next-translate/useTranslation"
 import useResponsive from "../../../utils/useResponsive"
 import { useSelector } from "react-redux"
+
+// style
+import styles from "./cardEvents.module.scss"
 
 import noImage from "../../../assets/images/no-image.jpg"
 
@@ -93,7 +97,9 @@ const CardEventsMobile: FC<CardProps> = (props) => {
 
       <Typography
         variant="h3"
-        className={expanded ? " " : "text-ellipsis text-ellipsis-event"}
+        className={
+          expanded ? " " : styles.textEllipsis + " " + styles.textEllipsisEvent
+        }
         // className="text-ellipsis text-ellipsis-event"
       >
         {props.title}
@@ -103,7 +109,7 @@ const CardEventsMobile: FC<CardProps> = (props) => {
         <CardMedia
           component="img"
           sx={{ height: "400px", marginY: "20px" }}
-          image={props.image ? props.image : noImage}
+          // image={props.image ? props.image : noImage}
           alt="event cover"
         />
       </Default>
@@ -111,7 +117,7 @@ const CardEventsMobile: FC<CardProps> = (props) => {
         <CardMedia
           component="img"
           sx={{ height: "250px", marginY: "20px" }}
-          image={props.image ? props.image : noImage}
+          // image={props.image ? props.image : noImage}
           alt="event cover"
         />
       </Mobile>

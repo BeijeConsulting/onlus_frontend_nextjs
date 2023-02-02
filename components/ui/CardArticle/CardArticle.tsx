@@ -25,7 +25,7 @@ const CardArticle: FC<CardProps> = (props) => {
         <CardContent>
           <CardMedia
             component="img"
-            image={props.image ? props.image : noImage}
+            // image={props.image ? props.image : noImage}
             alt="green iguana"
             sx={{ height: 250, objectFit: "cover" }}
           />

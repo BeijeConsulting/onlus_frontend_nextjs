@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import { Typography } from "@mui/material"
 
 //style
-import "./correlatedArticleCard.scss"
+import styles from "./correlatedArticleCard.module.scss"
 
 interface CorrelatedArticleCardProps {
   cover: string
@@ -14,9 +14,9 @@ interface CorrelatedArticleCardProps {
 
 const CorrelatedArticleCard: FC<CorrelatedArticleCardProps> = (props) => {
   return (
-    <div className="articleCardContainer">
-      <img src={props.cover} className="image" />
-      <div className="titleContainer">
+    <div className={styles.articleCardContainer}>
+      <img src={props.cover} className={styles.image} />
+      <div className={styles.titleContainer}>
         <Typography variant="body1">{props.title}</Typography>
         <Link to="#">
           <Typography variant="overline">Continua a leggere...</Typography>

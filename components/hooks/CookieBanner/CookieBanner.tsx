@@ -4,7 +4,7 @@ import CookieConsent from "react-cookie-consent"
 // import redux
 import { useSelector } from "react-redux"
 // translation
-import { useTranslation } from "react-i18next"
+import useTranslation from "next-translate/useTranslation"
 // type
 import { color } from "../../../utils/type"
 

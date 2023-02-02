@@ -1,22 +1,22 @@
-import { FC } from "react";
+import { FC } from "react"
 
 //mui
-import { Skeleton } from "@mui/material";
+import { Skeleton } from "@mui/material"
 
 //style
-import "./skeletonSquare.scss";
+import styles from "./skeletonSquare.module.scss"
 
 interface Props {
-  direction?: "column-reverse";
+  direction?: "column-reverse"
 }
 
 const SkeletonSquare: FC<Props> = (props) => {
   return (
-    <div id="skeletonSquare" style={{ flexDirection: props.direction }}>
-      <div className="titleText">
+    <div id={styles.skeletonSquare} style={{ flexDirection: props.direction }}>
+      <div className={styles.titleText}>
         <Skeleton variant="text" animation="wave" />
       </div>
-      <div className="image">
+      <div className={styles.image}>
         <Skeleton
           variant="rectangular"
           animation="wave"
@@ -25,7 +25,7 @@ const SkeletonSquare: FC<Props> = (props) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SkeletonSquare;
+export default SkeletonSquare

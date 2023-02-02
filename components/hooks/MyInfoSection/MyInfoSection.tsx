@@ -1,12 +1,17 @@
 import { FC, ReactElement, useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
+
+// navigation
+import { useRouter } from "next/navigation"
+import SCREENS from "@/route/router"
+import Link from "next/link"
+import NavLink from "../NavLink/NavLink"
 
 //i18n
-import { useTranslation } from "react-i18next"
+import useTranslation from "next-translate/useTranslation"
 
 // redux
 import { setLoggedState, saveUserData } from "../../../redux/duck/user"
+import { useDispatch } from "react-redux"
 
 //components
 import InputBox from "../inputBox/InputBox"
@@ -27,12 +32,10 @@ import {
 import { updateUserApi, deleteUserApi } from "../../../services/api/authApi"
 
 //style
-import "../../../styles/signup.scss"
-import "./myInfoSection.scss"
+import styles from "./myInfoSection.module.scss"
 
 //type
 import { personalInfo, sendObj } from "../../../utils/type"
-import SCREENS from "../../../route/router"
 
 // mui
 import { Typography } from "@mui/material"
@@ -64,7 +67,7 @@ interface State {
 const MyInfoSection: FC<InfoProps> = (props): ReactElement => {
   const { t, i18n }: any = useTranslation()
 
-  const navigate: Function = useNavigate()
+  const router: any = useRouter()
   const dispatch: Function = useDispatch()
 
   const initialState = {
@@ -232,7 +235,7 @@ const MyInfoSection: FC<InfoProps> = (props): ReactElement => {
       isOpen: false,
     })
 
-    navigate(SCREENS.home)
+    router.push(SCREENS.home)
   }
 
   const openModal = (): void => {
@@ -243,8 +246,8 @@ const MyInfoSection: FC<InfoProps> = (props): ReactElement => {
   }
 
   return (
-    <section className="myInfo-container">
-      <form action="" className={"form"} onSubmit={submit}>
+    <section className={styles.myInfoContainer}>
+      <form action="" className={styles.form} onSubmit={submit}>
         <div className={"input-box my-input-container"}>
           <InputBox
             label={t("login.name")}
@@ -265,7 +268,7 @@ const MyInfoSection: FC<InfoProps> = (props): ReactElement => {
             errorLabel={t("form.errorSurname")}
           />
         </div>
-        <div className={"input-box my-input-container"}>
+        <div className={styles["inputBox myInputContainer"]}>
           <InputBox
             defaultValue={state.email}
             label={t("login.email")}
@@ -296,7 +299,7 @@ const MyInfoSection: FC<InfoProps> = (props): ReactElement => {
             />
           )}
         </div>
-        <div className={"input-box my-input-container"}>
+        <div className={styles.inputBox + " " + styles.myInputContainer}>
           <InputBox
             defaultValue={state.phoneNumber}
             callbackChange={setPhoneNumber}
@@ -314,7 +317,15 @@ const MyInfoSection: FC<InfoProps> = (props): ReactElement => {
             }
           />
         </div>
-        <div className={"input-box my-input-container buttons-container"}>
+        <div
+          className={
+            styles.inputBox +
+            " " +
+            styles.myInputContainer +
+            " " +
+            styles.buttonsContainer
+          }
+        >
           <CustomButton
             label={t("buttons.disableAccount")}
             isDisable={false}
@@ -331,7 +342,7 @@ const MyInfoSection: FC<InfoProps> = (props): ReactElement => {
           />
 
           <GenericModal open={state.isOpen} callback={openModal}>
-            <div className="children-modal">
+            <div className={styles.childrenModal}>
               <Typography variant="body1">
                 {t("personalArea.disableSentence")}
               </Typography>
