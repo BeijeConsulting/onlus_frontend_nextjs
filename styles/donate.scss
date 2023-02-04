@@ -1,0 +1,42 @@
+@import "../styles/common.scss";
+
+#donate {
+  form {
+    margin-bottom: 20px;
+  }
+  .titleDonate {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  h3 {
+    margin-top: 20px;
+  }
+  .personalData {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .buttonContainer {
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  main#donate {
+    .titleDonate {
+      font-size: 70px;
+      font-weight: 600;
+    }
+    h3 {
+      margin-top: 20px;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .form {
+    width: 50vw;
+  }
+}

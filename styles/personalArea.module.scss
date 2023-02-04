@@ -1,0 +1,33 @@
+.personalArea {
+  .welcomeCard {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #d9d9d9;
+    align-items: center;
+    width: 100%;
+    padding: 0 0 30px 0;
+    h1 {
+      padding-bottom: 0;
+    }
+
+    .iconContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      width: 50px;
+    }
+  }
+}
+
+@media only screen and (min-width: 991px) {
+  .personalArea {
+    .welcomeCard {
+      justify-content: flex-start;
+      padding: 0 0 50px 0;
+      .iconContainer {
+        margin-right: 50px;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@import "./common.scss";
+
+#notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .notFoundContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .foundTitleColor {
+    color: $secondary;
+  }
+  .errorIcon {
+    width: 100px;
+    height: 100px;
+    color: $primary;
+  }
+}
+
+@media (min-width: 992px) {
+  .notFoundContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

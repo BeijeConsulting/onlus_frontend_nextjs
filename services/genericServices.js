@@ -1,6 +1,9 @@
 import axios from "axios";
-import PROPERTIES from "../utils/properties";
+import PROPERTIES from "@/utils/properties";
 import { updateAuthTokenApi } from "./api/updateAuthTokenApi";
+
+//cookies
+import { getCookie, setCookie } from "cookies-next";
 
 //instanza axios per chiamate non autenticate
 const axiosInstance = axios.create({
@@ -18,7 +21,7 @@ const axiosInstanceToken = axios.create({
 axiosInstanceToken.interceptors.request.use(
   (config) => {
     //si puo usare qualsisi storage
-    const token = localStorage.getItem("onlusToken");
+    const token = getCookie("onlusToken");
     if (token) {
       config.headers = {
         Authorization: `Bearer ${token}`,
@@ -47,11 +50,10 @@ axiosInstanceToken.interceptors.response.use(
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       const updateToken = await updateAuthTokenApi();
-      console.log(updateToken);
       if (updateToken.status === 200) {
         const { token, refreshToken } = updateToken.data;
-        localStorage.setItem("onlusToken", token);
-        localStorage.setItem("onlusRefreshToken", refreshToken);
+        setCookie("onlusToken", token);
+        setCookie("onlusRefreshToken", refreshToken);
         //riprova a fare la chiamata avendo il token aggiornato nello storage
         return axiosInstanceToken(originalRequest);
       }

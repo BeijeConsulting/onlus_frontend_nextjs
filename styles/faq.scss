@@ -1,0 +1,25 @@
+#faq {
+  section:nth-child(2) {
+    padding-top: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  #faq {
+    .faqContainer {
+      width: 65vw;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  #faq {
+    section:nth-child(2) {
+      padding-top: 100px;
+    }
+    .faqContainer {
+      width: 50vw;
+    }
+  }
+}

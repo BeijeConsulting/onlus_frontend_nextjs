@@ -1,26 +1,26 @@
-import { FC } from "react"
+import { FC } from "react";
 
 // style
-import styles from "./prefooter.module.scss"
+import styles from "./prefooter.module.scss";
 
 // i18n
-import useTranslation from "next-translate/useTranslation"
+import useTranslation from "next-translate/useTranslation";
 
 //mui
-import { Typography } from "@mui/material"
+import { Typography } from "@mui/material";
 
 //redux
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 
 const PreFooter: FC = () => {
-  const LOGO = useSelector((state: any) => state.generalDuck.logoContent)
-  const BANNER = useSelector((state: any) => state.generalDuck.sectionWork)
+  const LOGO = useSelector((state: any) => state.generalDuck.logoContent);
+  const BANNER = useSelector((state: any) => state.generalDuck.sectionWork);
 
   // tranlation hook
-  const { t }: any = useTranslation()
+  const { t }: any = useTranslation();
 
   return (
-    <mark id={styles.prefooterstyles}>
+    <mark id={styles.prefooter}>
       <div className={styles.logostyles}>
         <img src={LOGO} alt="" />
       </div>
@@ -31,7 +31,7 @@ const PreFooter: FC = () => {
         )}
       </div>
     </mark>
-  )
-}
+  );
+};
 
-export default PreFooter
+export default PreFooter;

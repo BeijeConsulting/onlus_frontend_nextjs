@@ -8,12 +8,12 @@
   font-size: 100%;
 }
 
-html{
-  scroll-behavior: smooth;
-}
+// html {
+//   scroll-behavior: smooth;
+// }
 
-body{
-  font-family: "Noto Sans JP", sans-serif;
+body {
+  overflow-x: hidden;
 }
 
 ul,
@@ -22,9 +22,123 @@ ul li {
 }
 a {
   text-decoration: none;
-  color: white;
 }
 
 img {
   height: auto;
+}
+
+main {
+  min-height: 100vh;
+  &#blog,
+  &#donate,
+  &#events,
+  &#faq,
+  &#login,
+  &#personalArea,
+  &#signup,
+  &#notFound,
+  &#resetPassword,
+  &#confirmDonation {
+    padding-top: calc(104px + 20px);
+  }
+  &#about,
+  &#support,
+  &#article {
+    padding-top: 104px;
+  }
+}
+
+.sectionContainer {
+  padding: 20px;
+}
+
+h1 {
+  padding-bottom: 10px;
+}
+
+.loader {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  animation: rotate 1s ease-out infinite;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    padding-bottom: 20px;
+  }
+  main {
+    &#blog,
+    &#donate,
+    &#events,
+    &#faq,
+    &#login,
+    &#personalArea,
+    &#signup,
+    &#notFound,
+    &#resetPassword,
+    &#confirmDonation {
+      padding-top: calc(104px + 50px);
+    }
+  }
+  .sectionContainer {
+    padding: 50px;
+  }
+  .loader {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+.children-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.text-ellipsis-event {
+  width: 290px;
+}
+.text-ellipsis-article {
+  width: 310px;
+}
+
+@media (min-width: 992px) {
+  main {
+    &#blog,
+    &#donate,
+    &#events,
+    &#faq,
+    &#login,
+    &#personalArea,
+    &#signup,
+    &#notFound,
+    &#resetPassword,
+    &#confirmDonation {
+      padding-top: calc(104px + 100px);
+    }
+  }
+  .sectionContainer {
+    padding: 100px;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

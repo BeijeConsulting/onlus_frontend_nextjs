@@ -2,12 +2,18 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
+//react
+import { FC, useEffect, useState } from "react";
+
 //style
 import "@/styles/globals.scss";
 
 //redux
 import { Provider } from "react-redux";
 import store from "../redux/store";
+import { saveUserData } from "@/redux/duck/user";
+import { setGeneral } from "@/redux/duck/general";
+import { useDispatch } from "react-redux";
 
 //mui
 import { StyledEngineProvider } from "@mui/material";

@@ -1,0 +1,38 @@
+main#signup {
+  .form {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .asideSection {
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.inputBox {
+  display: grid;
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  main#signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .form {
+    width: 50vw;
+  }
+  .asideSection {
+    padding-top: 50px;
+  }
+
+  .inputBox {
+    display: flex;
+    justify-content: stretch;
+  }
+}
