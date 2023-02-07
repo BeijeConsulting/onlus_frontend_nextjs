@@ -10,6 +10,16 @@ const nextConfig = nextTranslate({
   i18n: {
     ...nextTranslate(),
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "onlus-dev.s3.eu-south-1.amazonaws.com",
+        port: "",
+        pathname: "/imagesabout/**"
+      }
+    ]
+  }
 });
 
 module.exports = nextConfig;

@@ -52,7 +52,11 @@ function DonationHistory(props: Props): ReactElement {
         className={styles.singleDonation}
         style={{ borderBottomColor: hexToRGB(PALETTE[2].textColor, 0.3) }}
       >
-        <span>{`${convertDate(element.donationDate, t("dateFormat"))}`}</span>
+        <span>{`${convertDate(
+          element.donationDate,
+          "it-IT"
+          //t("dateFormat")
+        )}`}</span>
         <span>{`${element.amount}€`}</span>
       </div>
     )

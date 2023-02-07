@@ -1,7 +1,5 @@
-#about,
-#support {
-  .contentAboutContainer,
-  .contentAboutContainerOnlyText {
+.support {
+  .contentSupportContainer {
     display: grid;
     gap: 20px;
     padding: 10px 0;
@@ -12,7 +10,7 @@
     flex-direction: column;
     height: 300px;
   }
-  .contentAbout {
+  .contentSupport {
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -20,9 +18,8 @@
 }
 
 @media (min-width: 768px) {
-  #about,
-  #support {
-    .contentAboutContainer {
+  .support {
+    .contentSupportContainer {
       grid-template-columns: repeat(2, 1fr);
       gap: 50px;
       padding: 30px 0;
@@ -34,12 +31,12 @@
         .mediaContainer {
           grid-area: 1 / 1 / 2 / 2;
         }
-        .textAbout {
+        .textSupport {
           grid-area: 1 / 2 / 2 / 3;
         }
       }
     }
-    .contentAboutContainerOnlyText {
+    .contentSupportContainerTextOnly {
       padding: 30px 0;
     }
   }

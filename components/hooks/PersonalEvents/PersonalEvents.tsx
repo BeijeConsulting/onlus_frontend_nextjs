@@ -54,6 +54,13 @@ const PersonalEvents: FC<Props> = (props) => {
   )
 
   useEffect(() => {
+    // console.log("prrrrr", props.events)
+    // if (props.events === (null || undefined) || props.events!.length <= 0) {
+    //   console.log("ciao")
+    // } else {
+    //   console.log("ciao cazzo")
+    //   splitEvents()
+    // }
     splitEvents()
   }, [])
 
@@ -61,8 +68,8 @@ const PersonalEvents: FC<Props> = (props) => {
     let future: events[] = []
     let past: events[] = []
 
-    props.events!.forEach((event: events) => {
-      var dateTokens = event.eventDate.split("-")
+    props.events?.forEach((event: events) => {
+      var dateTokens = event?.eventDate?.split("-")
       let tempDate = new Date(
         parseInt(dateTokens[0]),
         parseInt(dateTokens[1]) - 1,
@@ -131,7 +138,11 @@ const PersonalEvents: FC<Props> = (props) => {
                 image={element.coverContent}
                 requirement={element.requirements}
                 description={element.description}
-                date={convertDate(element.eventDate, t("dateFormat"))}
+                date={convertDate(
+                  element?.eventDate,
+                  "it-IT"
+                  //t("dateFormat")
+                )}
                 place={element.place}
                 opaque={past}
                 callbackCancel={cancelBook}
@@ -144,7 +155,11 @@ const PersonalEvents: FC<Props> = (props) => {
               image={element.coverContent}
               requirement={element.requirements}
               description={element.description}
-              date={convertDate(element.eventDate, t("dateFormat"))}
+              date={convertDate(
+                element?.eventDate,
+                "it-IT"
+                //t("dateFormat")
+              )}
               place={element.place}
               opaque={past}
               attendants={[userEmail]}
@@ -157,7 +172,7 @@ const PersonalEvents: FC<Props> = (props) => {
 
   return (
     <article className={styles.eventsSection}>
-      <section className={styles.eventsSection}>
+      <section className={styles.eventSection}>
         <Typography variant="h3" sx={{ paddingBottom: "25px" }}>
           {t("personalArea.programmedEvents")}
         </Typography>
