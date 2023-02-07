@@ -16,7 +16,7 @@ const nextConfig = nextTranslate({
         protocol: "https",
         hostname: "onlus-dev.s3.eu-south-1.amazonaws.com",
         port: "",
-        pathname: "/imagesabout/**"
+        pathname: "/**"
       }
     ]
   }

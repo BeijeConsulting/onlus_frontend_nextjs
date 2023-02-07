@@ -51,12 +51,12 @@ function Support() {
         <Typography variant="body1">{item.paragraph}</Typography>
         {!!item.mediaContent && (
           <div className={styles.mediaContainer}>
-            {/* <Image
+            <Image
               src={item.mediaContent}
               alt=""
               fill
               style={{ objectFit: "cover" }}
-            ></Image> */}
+            ></Image>
           </div>
         )}
       </section>
