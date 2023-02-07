@@ -46,6 +46,12 @@ import { useSelector } from "react-redux";
 //cookie
 import { getCookie } from "cookies-next";
 
+interface Props {
+  personalData: any;
+  ownDonation: any;
+  ownEvents: any;
+}
+
 interface State {
   isLoaded: boolean;
   data: personalInfo | null;
@@ -60,7 +66,11 @@ const initialState = {
   donationData: [],
 };
 
-const PersonalArea: FC = () => {
+const PersonalArea = ({
+  personalData,
+  ownDonation,
+  ownEvents,
+}: Props): JSX.Element => {
   const [state, setState] = useState<State>(initialState);
 
   const { t, i18n }: any = useTranslation();
@@ -69,7 +79,7 @@ const PersonalArea: FC = () => {
   const isLogged: boolean = useSelector(
     (state: any) => state.userDuck.isLoggedIn
   );
-  const userId: number = JSON.parse(getCookie("userOnlus")!.userId);
+
   const router: any = useRouter();
 
   const checkLog = (): void => {
@@ -77,15 +87,12 @@ const PersonalArea: FC = () => {
   };
 
   async function fetchDatas(): Promise<void> {
-    let resultPersonalData: any = await getPersonalDatas(userId);
-    let resultOwnDonation: any = await getAllDonation();
-    let resultOwnEvents: any = await getUserEventsApi();
     setState({
       ...state,
       isLoaded: true,
-      data: resultPersonalData.data,
-      eventsData: resultOwnEvents.data,
-      donationData: resultOwnDonation.data,
+      data: personalData,
+      eventsData: ownDonation,
+      donationData: ownEvents,
     });
   }
 
@@ -98,14 +105,29 @@ const PersonalArea: FC = () => {
     });
   };
 
-  // useEffect(() => {
-  //   checkLog();
-  //   fetchDatas();
-  // }, [i18n.language]);
+  const getApi = async () => {
+    const user: any = getCookie("userOnlus");
+    const userId = JSON.parse(user) || null;
+    const [resultPersonalData, resultOwnDonation, resultOwnEvents]: Array<any> =
+      await Promise.all([
+        getPersonalDatas(userId.userId),
+        getAllDonation(),
+        getUserEventsApi(),
+      ]);
+    console.log([resultPersonalData, resultOwnDonation, resultOwnEvents]);
+  };
+
+  useEffect(() => {
+    checkLog();
+    //getApi();
+    //fetchDatas();
+    // console.log(personalData, ownDonation, ownEvents, "client");
+  }, []);
 
   return (
     <>
-      <main
+      <p>wewe fratm tutt'apposto</p>
+      {/* <main
         id="personalArea"
         className={`sectionContainer ${styles.personalArea}`}
       >
@@ -131,11 +153,11 @@ const PersonalArea: FC = () => {
                 ]}
                 children={[
                   <MyInfoSection datas={state!.data} />,
-                  <PersonalEvents
-                    events={state!.eventsData}
-                    callbackCancel={handleCancel}
-                  />,
-                  <DonationHistory datas={state!.donationData} />,
+                  // <PersonalEvents
+                  //   events={state!.eventsData}
+                  //   callbackCancel={handleCancel}
+                  // />,
+                  // <DonationHistory datas={state!.donationData} />,
                 ]}
               />
             </DesktopContainer>
@@ -148,23 +170,43 @@ const PersonalArea: FC = () => {
                 ]}
                 children={[
                   <MyInfoSection datas={state!.data} />,
-                  <PersonalEvents
-                    events={state!.eventsData}
-                    callbackCancel={handleCancel}
-                  />,
-                  <DonationHistory datas={state!.donationData} />,
+                  // <PersonalEvents
+                  //   events={state!.eventsData}
+                  //   callbackCancel={handleCancel}
+                  // />,
+                  // <DonationHistory datas={state!.donationData} />,
                 ]}
               />
             </MobileContainer>
           </>
         ) : (
           <div className="loading-button">
-            {/* <img src={require("../assets/images/loader.jpg")} alt="loading" /> */}
+            <img src={require("../assets/images/loader.jpg")} alt="loading" />
           </div>
         )}
-      </main>
+        <Link href={SCREENS.home}>ciaociaociao</Link>
+      </main> */}
     </>
   );
 };
 
 export default PersonalArea;
+export const getServerSideProps = async ({ req, res }: any) => {
+  const user: any = getCookie("userOnlus", { req, res });
+  //const userId: any = context.req.cookies["userId"];
+  //const userId = JSON.parse(user) || null;
+  // const [resultPersonalData, resultOwnDonation, resultOwnEvents]: Array<any> =
+  //   await Promise.all([
+  //     getPersonalDatas(44),
+  //     getAllDonation(),
+  //     getUserEventsApi(),
+  //   ]);
+  console.log("server", user);
+  return {
+    props: {
+      // personalData: resultPersonalData,
+      // ownDonation: resultOwnDonation,
+      // ownEvents: resultOwnEvents,
+    },
+  };
+};

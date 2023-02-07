@@ -119,7 +119,7 @@ const Home = ({
   };
   const getTheCookie = () => {
     const wewe = getCookie("prova");
-    console.log(wewe)
+    console.log(wewe);
   };
   // const fetchDatas = async (): Promise<void> => {
   //   // let home: boolean = false,
@@ -205,13 +205,9 @@ const Home = ({
   return (
     <>
       <Layout>
-        <div style={{ height: 300, background: "red" }} id="events">
-          ciao
-        </div>
+        <div style={{ height: 300, background: "red" }} id="events"></div>
         <div style={{ height: 300, background: "yellow" }} id="blog">
-          ciao
-          <button onClick={setTheCookie}>set</button>
-          <button onClick={getTheCookie}>get</button>
+          <Link href={SCREENS.personalArea}>ciaociaociao</Link>
         </div>
         <div style={{ height: 300, background: "blue" }} id="history">
           ciao
@@ -239,25 +235,3 @@ export const getServerSideProps = async (ctx: any) => {
     },
   };
 };
-/* export const getServerSideProps = async () => {
-   const [
-     homeResponse,
-     eventResponse,
-     articleResponse,
-     socialResponse,
-   ]: Array<any> = await Promise.all([
-     getHome(),
-     getEvents(),
-     getArticles(),
-     ["ciao", "cioa", "caio"],
-  ]);
-
-   return {
-     props: {
-       homeData: homeResponse.data,
-       eventData: eventResponse.data,
-       articleData: articleResponse.data,
-       socialData: socialResponse,
-     },
-   };
- }; */
