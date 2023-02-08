@@ -9,6 +9,8 @@ import NavLink from "@/components/hooks/NavLink/NavLink";
 
 // i18n
 import useTranslation from "next-translate/useTranslation";
+import I18nProvider from "next-translate/I18nProvider";
+import common from "@/locales/it/common.json";
 
 // componenti
 import Hero from "@/components/hooks/Hero/Hero";
@@ -203,7 +205,7 @@ const Home = ({
   //   return;
   // };
   return (
-    <>
+    <I18nProvider lang="it" namespaces={{ common }}>
       <Layout>
         <div style={{ height: 300, background: "red" }} id="events"></div>
         <div style={{ height: 300, background: "yellow" }} id="blog">
@@ -220,7 +222,7 @@ const Home = ({
           />
         </div>
       </Layout>
-    </>
+    </I18nProvider>
   );
 };
 export default Home;

@@ -56,7 +56,13 @@ const TemporaryDrawer: FC = () => {
   const router: any = useRouter()
 
   //i18n
-  const { t }: any = useTranslation()
+  const { t }: any = useTranslation('common')
+  const homeTrans = t("nav.home");
+  const aboutTrans = t("nav.about");
+  const eventsTrans = t("nav.events");
+  const blogTrans = t("nav.blog");
+  const supportTrans = t("nav.supportUs");
+  const infoTrans = t("nav.info");
 
   const toggleDrawer = (open: any) => (event: any) => {
     if (
@@ -80,22 +86,22 @@ const TemporaryDrawer: FC = () => {
   //Navigation from sidebar
   const navigationFromSidebar = (text: string) => (): any => {
     switch (text) {
-      case t("home"):
+      case homeTrans:
         router.push(SCREENS.home)
         break
-      case t("about"):
+      case aboutTrans:
         router.push(SCREENS.about)
         break
-      case t("events"):
+      case eventsTrans:
         router.push(SCREENS.events)
         break
-      case t("blog"):
+      case blogTrans:
         router.push(SCREENS.blog)
         break
-      case t("supportUs"):
+      case supportTrans:
         router.push(SCREENS.support)
         break
-      case t("info"):
+      case infoTrans:
         router.push(SCREENS.faq)
         break
 
@@ -118,12 +124,12 @@ const TemporaryDrawer: FC = () => {
 
       <List className={styles.navContainer}>
         {[
-          t("home"),
-          t("about"),
-          t("events"),
-          t("blog"),
-          t("supportUs"),
-          t("info"),
+          homeTrans,
+          aboutTrans,
+          eventsTrans,
+          blogTrans,
+          supportTrans,
+          infoTrans,
         ].map((text, index) => (
           <ListItem
             key={text}

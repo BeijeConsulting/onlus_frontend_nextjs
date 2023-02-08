@@ -1,61 +1,61 @@
-import { FC, useState, useEffect, useRef } from "react"
+import { FC, useState, useEffect, useRef } from "react";
 
 //next
-import Image from "next/image"
+import Image from "next/image";
 
 //navigation
-import { useRouter } from "next/navigation"
-import SCREENS from "@/route/router"
-import Link from "next/link"
-import NavLink from "../NavLink/NavLink"
+import { useRouter } from "next/navigation";
+import SCREENS from "@/route/router";
+import Link from "next/link";
+import NavLink from "../NavLink/NavLink";
 
 // mui
-import ButtonGroup from "@mui/material/ButtonGroup"
-import ClickAwayListener from "@mui/material/ClickAwayListener"
-import Grow from "@mui/material/Grow"
-import Paper from "@mui/material/Paper"
-import Popper from "@mui/material/Popper"
-import MenuItem from "@mui/material/MenuItem"
-import MenuList from "@mui/material/MenuList"
-import { Typography } from "@mui/material"
+import ButtonGroup from "@mui/material/ButtonGroup";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import Grow from "@mui/material/Grow";
+import Paper from "@mui/material/Paper";
+import Popper from "@mui/material/Popper";
+import MenuItem from "@mui/material/MenuItem";
+import MenuList from "@mui/material/MenuList";
+import { Typography } from "@mui/material";
 
 //Components
-import TemporaryDrawer from "../TemporaryDrawer/TemporaryDrawer"
-import ExpandButton from "../../ui/buttons/ExpandButton"
-import GenericModal from "../GenericModal/GenericModal"
-import CustomButton from "../../ui/buttons/CustomButton/CustomButton"
+import TemporaryDrawer from "../TemporaryDrawer/TemporaryDrawer";
+import ExpandButton from "../../ui/buttons/ExpandButton";
+import GenericModal from "../GenericModal/GenericModal";
+import CustomButton from "../../ui/buttons/CustomButton/CustomButton";
 
 // Icons
-import { BiUser } from "react-icons/bi"
+import { BiUser } from "react-icons/bi";
 
 //Style
-import styles from "./header.module.scss"
+import styles from "./header.module.scss";
 
 //i18n
-import useTranslation from "next-translate/useTranslation"
+import useTranslation from "next-translate/useTranslation";
 
 //responsive
-import useResponsive from "../../../utils/useResponsive"
+import useResponsive from "../../../utils/useResponsive";
 
 //redux
-import { setLoggedState, saveUserData } from "../../../redux/duck/user"
-import { useSelector, useDispatch } from "react-redux"
+import { setLoggedState, saveUserData } from "../../../redux/duck/user";
+import { useSelector, useDispatch } from "react-redux";
 
 // type
-import { color } from "../../../utils/type"
+import { color } from "../../../utils/type";
 
 // img
-import logo from "../../../giraffeImg.jpg"
+import logo from "../../../giraffeImg.jpg";
 
 interface HeaderProps {
-  isHome?: boolean
+  isHome?: boolean;
 }
 
 interface State {
-  scroll: boolean
-  lng: string
-  open: boolean
-  isOpenModal: boolean
+  scroll: boolean;
+  lng: string;
+  open: boolean;
+  isOpenModal: boolean;
 }
 
 const initialState = {
@@ -63,37 +63,46 @@ const initialState = {
   lng: "it",
   open: false,
   isOpenModal: false,
-}
+};
 
 const Header: FC<HeaderProps> = (props) => {
-  const [state, setState] = useState<State>(initialState)
-  const dispatch: Function = useDispatch()
+  const [state, setState] = useState<State>(initialState);
+  const dispatch: Function = useDispatch();
 
-  const LOGO: any = useSelector((state: any) => state.generalDuck.logoContent)
+  const LOGO: any = useSelector((state: any) => state.generalDuck.logoContent);
   const PALETTE: Array<color> = useSelector(
     (state: any) => state.generalDuck.palette
-  )
+  );
   const isLoggedIn: boolean = useSelector(
     (state: any) => state.userDuck.isLoggedIn
-  )
-  const anchorRef = useRef<HTMLDivElement>(null)
+  );
+  const anchorRef = useRef<HTMLDivElement>(null);
 
-  const router: any = useRouter()
+  const router: any = useRouter();
 
-  const { t, i18n }: any = useTranslation()
+  const { t, i18n }: any = useTranslation("common");
+  const homeTrans = t("nav.home");
+  const aboutTrans = t("nav.about");
+  const eventsTrans = t("nav.events");
+  const blogTrans = t("nav.blog");
+  const supportTrans = t("nav.supportUs");
+  const infoTrans = t("nav.info");
+  const logoutTrans = t("nav.logout");
+  const logoutSenTrans = t("nav.logoutSentence");
+  const historyTrans = t("nav.history")
 
   // mediaquery
-  const [DesktopContainer, MobileContainer] = useResponsive()
+  const [DesktopContainer, MobileContainer] = useResponsive();
 
   // navigazione
   const goTo = (params: string) => (): void => {
     if (params === SCREENS.personalArea) {
-      if (isLoggedIn) router.push(params)
-      else router.push(SCREENS.login)
+      if (isLoggedIn) router.push(params);
+      else router.push(SCREENS.login);
     } else {
-      router.push(params)
+      router.push(params);
     }
-  }
+  };
 
   // Changelanguage
   // const changeLanguageClick = (lang: string) => (): void => {
@@ -102,70 +111,70 @@ const Header: FC<HeaderProps> = (props) => {
 
   // Scroll
   const handleScroll = (): void => {
-    let windowScroll: number = window.scrollY
-    let scrolly: boolean = false
+    let windowScroll: number = window.scrollY;
+    let scrolly: boolean = false;
 
     if (windowScroll > 150) {
-      scrolly = true
-    } else scrolly = false
+      scrolly = true;
+    } else scrolly = false;
 
     setState({
       ...state,
       scroll: scrolly,
-    })
-  }
+    });
+  };
 
   const scrollWithOffset = (el: any): void => {
     const yCoordinate: number =
-      el.getBoundingClientRect().top + window.pageYOffset
-    const yOffset: number = -147.2
-    window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" })
-  }
+      el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset: number = -147.2;
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
+  };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [state.scroll])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [state.scroll]);
 
   const handleToggle = (): void => {
     setState({
       ...state,
       open: !state.open,
-    })
-  }
+    });
+  };
 
   const handleClose = (event: Event): void => {
     if (
       anchorRef.current &&
       anchorRef.current.contains(event.target as HTMLElement)
     ) {
-      return
+      return;
     }
     setState({
       ...state,
       open: false,
-    })
-  }
+    });
+  };
 
   const logout = (): void => {
-    dispatch(setLoggedState(false))
-    dispatch(saveUserData({}))
+    dispatch(setLoggedState(false));
+    dispatch(saveUserData({}));
 
-    sessionStorage.removeItem("userOnlus")
-    localStorage.removeItem("onlusRefreshToken")
-    localStorage.removeItem("onlusToken")
+    sessionStorage.removeItem("userOnlus");
+    localStorage.removeItem("onlusRefreshToken");
+    localStorage.removeItem("onlusToken");
 
-    router.push(SCREENS.home)
-  }
+    router.push(SCREENS.home);
+  };
 
   const openModal = (): void => {
     setState({
       ...state,
       isOpenModal: !state.isOpenModal,
-    })
-  }
+    });
+  };
 
   return (
     <header
@@ -192,7 +201,7 @@ const Header: FC<HeaderProps> = (props) => {
           <nav className={styles.navDesktop}>
             <NavLink exact href={SCREENS.home}>
               <Typography variant="body2">
-                {t("home")}
+                {homeTrans}
                 <span
                   className={styles.underline}
                   style={{ background: PALETTE[0].textColor }}
@@ -202,7 +211,7 @@ const Header: FC<HeaderProps> = (props) => {
 
             <NavLink exact href={SCREENS.about}>
               <Typography variant="body2">
-                {t("about")}
+                {aboutTrans}
                 <span
                   className={styles.underline}
                   style={{ background: PALETTE[0].textColor }}
@@ -212,7 +221,7 @@ const Header: FC<HeaderProps> = (props) => {
 
             <NavLink exact href={SCREENS.events}>
               <Typography variant="body2">
-                {t("events")}
+                {eventsTrans}
                 <span
                   className={styles.underline}
                   style={{ background: PALETTE[0].textColor }}
@@ -222,7 +231,7 @@ const Header: FC<HeaderProps> = (props) => {
 
             <NavLink exact href={SCREENS.blog}>
               <Typography variant="body2">
-                {t("blog")}
+                {blogTrans}
                 <span
                   className={styles.underline}
                   style={{ background: PALETTE[0].textColor }}
@@ -232,7 +241,7 @@ const Header: FC<HeaderProps> = (props) => {
 
             <NavLink exact href={SCREENS.support}>
               <Typography variant="body2">
-                {t("supportUs")}
+                {supportTrans}
                 <span
                   className={styles.underline}
                   style={{ background: PALETTE[0].textColor }}
@@ -242,7 +251,7 @@ const Header: FC<HeaderProps> = (props) => {
 
             <NavLink exact href={SCREENS.faq}>
               <Typography variant="body2">
-                {t("info")}
+                {infoTrans}
                 <span
                   className={styles.underline}
                   style={{ background: PALETTE[0].textColor }}
@@ -314,7 +323,7 @@ const Header: FC<HeaderProps> = (props) => {
                             {t("metaTitles.personalArea")}
                           </MenuItem>
 
-                          <MenuItem onClick={openModal}>{t("logout")}</MenuItem>
+                          <MenuItem onClick={openModal}>{logoutTrans}</MenuItem>
                         </MenuList>
                       ) : (
                         <MenuList id="split-button-menu">
@@ -341,7 +350,7 @@ const Header: FC<HeaderProps> = (props) => {
       <div className={styles.bottomHeader}>
         <a href="#events" className={styles.bottomHeaderButton}>
           <Typography variant="body2">
-            {t("events")}
+            {eventsTrans}
             <span
               className={styles.underline}
               style={{ background: PALETTE[0].textColor }}
@@ -350,7 +359,7 @@ const Header: FC<HeaderProps> = (props) => {
         </a>
         <a href="#blog" className={styles.bottomHeaderButton}>
           <Typography variant="body2">
-            {t("blog")}
+            {blogTrans}
             <span
               className={styles.underline}
               style={{ background: PALETTE[0].textColor }}
@@ -359,7 +368,7 @@ const Header: FC<HeaderProps> = (props) => {
         </a>
         <a href="#history" className={styles.bottomHeaderButton}>
           <Typography variant="body2">
-            {t("history")}
+            {historyTrans}
             <span
               className={styles.underline}
               style={{ background: PALETTE[0].textColor }}
@@ -370,7 +379,7 @@ const Header: FC<HeaderProps> = (props) => {
 
       <GenericModal open={state.isOpenModal} callback={openModal}>
         <div className={styles.childrenModal}>
-          <Typography variant="caption">{t("logoutSentence")}</Typography>
+          <Typography variant="caption">{logoutSenTrans}</Typography>
           <CustomButton
             label={t("confirm")}
             isDisable={false}
@@ -381,7 +390,7 @@ const Header: FC<HeaderProps> = (props) => {
         </div>
       </GenericModal>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

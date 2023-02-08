@@ -18,6 +18,7 @@ const PreFooter: FC = () => {
 
   // tranlation hook
   const { t }: any = useTranslation();
+  
 
   return (
     <mark id={styles.prefooter}>
