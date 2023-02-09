@@ -1,4 +1,4 @@
-main#signup {
+.signup {
   .form {
     gap: 10px;
     display: flex;
@@ -18,7 +18,7 @@ main#signup {
 }
 
 @media (min-width: 768px) {
-  main#signup {
+  .signup {
     display: flex;
     align-items: center;
     justify-content: center;
