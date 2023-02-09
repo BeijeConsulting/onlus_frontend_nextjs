@@ -1,68 +1,74 @@
-import { FC, useEffect, useRef, useState } from "react"
+import { FC, useEffect, useRef, useState } from "react";
 
 // mui
-import Card from "@mui/material/Card"
-import CardContent from "@mui/material/CardContent"
-import CardMedia from "@mui/material/CardMedia"
-import Typography from "@mui/material/Typography"
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
 
-import { MutableRefObject } from "react"
+import { MutableRefObject } from "react";
 
 // translation
-import useTranslation from "next-translate/useTranslation"
+import useTranslation from "next-translate/useTranslation";
 
 // components
-import CustomButton from "../../ui/buttons/CustomButton/CustomButton"
+import CustomButton from "../../ui/buttons/CustomButton/CustomButton";
 
 //Style
-import styles from "./cardEvents.module.scss"
-import { useSelector } from "react-redux"
+import styles from "./cardEvents.module.scss";
+import { useSelector } from "react-redux";
 
-import noImage from "../../../assets/images/no-image.jpg"
+import noImage from "../../../assets/images/no-image.jpg";
 
 // props
 interface CardProps {
-  title: string
-  image: string
-  description: string
-  requirement: string
-  date: string
-  place: string
-  callbackBook: Function
-  callbackCancel: Function
-  attendants: Array<string>
+  title: string;
+  image: string;
+  description: string;
+  requirement: string;
+  date: string;
+  place: string;
+  callbackBook: Function;
+  callbackCancel: Function;
+  attendants: Array<string>;
 }
 
 interface State {
-  height: number
+  height: number;
 }
 const initialState = {
   height: 0,
-}
+};
 const CardEvents: FC<CardProps> = (props) => {
-  const USER: any = useSelector((state: any) => state.userDuck.userData)
+  const USER: any = useSelector((state: any) => state.userDuck.userData);
 
-  const [state, setState] = useState<State>(initialState)
+  const [state, setState] = useState<State>(initialState);
 
   // tranlation hook
-  const { t }: any = useTranslation()
+  const { t }: any = useTranslation("common");
+  const LANG: any = {
+    description: t("events.description"),
+    requirement: t("events.requirements"),
+    cancelBooking: t("buttons.cancelBooking"),
+    bookButton: t("buttons.bookButton"),
+  };
 
-  const headerRef: MutableRefObject<any> = useRef(0)
+  const headerRef: MutableRefObject<any> = useRef(0);
 
   const goToBooking = (): void => {
-    if (!!props.callbackBook) props.callbackBook()
-  }
+    if (!!props.callbackBook) props.callbackBook();
+  };
 
   const cancelBooking = (): void => {
-    if (!!props.callbackCancel) props.callbackCancel()
-  }
+    if (!!props.callbackCancel) props.callbackCancel();
+  };
 
   useEffect(() => {
     setState({
       ...state,
       height: headerRef.current.clientHeight,
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <Card className={styles.eventsCard}>
@@ -86,11 +92,11 @@ const CardEvents: FC<CardProps> = (props) => {
           style={{ height: `${state.height}px` }}
         >
           <section>
-            <Typography variant="h4">{t("events.description")}</Typography>
+            <Typography variant="h4">{LANG.description}</Typography>
             <Typography variant="body1">{props.description}</Typography>
           </section>
           <section>
-            <Typography variant="h4">{t("events.requirements")}</Typography>
+            <Typography variant="h4">{LANG.requirement}</Typography>
             <Typography variant="body1">{props.requirement}</Typography>
           </section>
         </div>
@@ -109,21 +115,21 @@ const CardEvents: FC<CardProps> = (props) => {
             <CustomButton
               colorType={"secondary"}
               callback={cancelBooking}
-              label={t("buttons.cancelBooking")}
+              label={LANG.cancelBooking}
               size={"small"}
             />
           ) : (
             <CustomButton
               colorType={"success"}
               callback={goToBooking}
-              label={t("buttons.bookButton")}
+              label={LANG.bookButton}
               size={"small"}
             />
           )}
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardEvents
+export default CardEvents;

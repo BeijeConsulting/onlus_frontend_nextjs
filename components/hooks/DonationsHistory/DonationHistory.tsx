@@ -1,48 +1,54 @@
-import { ReactElement, useState, useEffect } from "react"
+import { ReactElement, useState, useEffect } from "react";
 
 // redux
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 
 //style
-import styles from "./donationHistory.module.scss"
+import styles from "./donationHistory.module.scss";
 
 //i18n
-import useTranslation from "next-translate/useTranslation"
+import useTranslation from "next-translate/useTranslation";
 
 //type
-import { donation, color } from "../../../utils/type"
+import { donation, color } from "../../../utils/type";
 
 // convertdate
-import { convertDate } from "../../../utils/convertDate"
+import { convertDate } from "../../../utils/convertDate";
 
 //mui
-import { Typography } from "@mui/material"
+import { Typography } from "@mui/material";
 
 // convert to RGB
-import { hexToRGB } from "../../../utils/hexToRGB"
+import { hexToRGB } from "../../../utils/hexToRGB";
 
 interface Props {
-  datas: Array<donation>
+  datas: Array<donation>;
 }
 
 function DonationHistory(props: Props): ReactElement {
-  const { t }: any = useTranslation()
-  const [state, setState] = useState<number>(0)
+  const [state, setState] = useState<number>(0);
 
   const PALETTE: Array<color> = useSelector(
     (state: any) => state.generalDuck.palette
-  )
+  );
+
+  const { t }: any = useTranslation("common");
+  const LANG: any = {
+    totalDonated: t("personalArea.totalDonated"),
+    donationsHistory: t("personalArea.donationsHistory"),
+    dateFormat: t("dateFormat"),
+  };
 
   useEffect(() => {
-    sumDonations()
-  }, [])
+    sumDonations();
+  }, []);
 
   function sumDonations(): void {
-    let sum: number = 0
+    let sum: number = 0;
     props.datas?.forEach((elem: donation) => {
-      sum = sum + elem.amount
-    })
-    setState(sum)
+      sum = sum + elem.amount;
+    });
+    setState(sum);
   }
 
   function mapping(element: donation, key: number): ReactElement {
@@ -55,11 +61,11 @@ function DonationHistory(props: Props): ReactElement {
         <span>{`${convertDate(
           element.donationDate,
           "it-IT"
-          //t("dateFormat")
+          // LANG.dateFormat
         )}`}</span>
         <span>{`${element.amount}€`}</span>
       </div>
-    )
+    );
   }
 
   return (
@@ -67,22 +73,20 @@ function DonationHistory(props: Props): ReactElement {
       <section className={styles.windowBox}>
         <div className={styles.donationTotal}>
           <Typography variant="body1">
-            {t("personalArea.totalDonated")}
+            {LANG.totalDonated}
 
             <span className={styles.bigNumber}>{`${state}€`}</span>
           </Typography>
         </div>
         <div className={styles.titleHistory}>
-          <Typography variant="h3">
-            {t("personalArea.donationsHistory")}
-          </Typography>
+          <Typography variant="h3">{LANG.donationsHistory}</Typography>
         </div>
         <section className={styles.donations}>
           <Typography variant="body1">{props.datas?.map(mapping)}</Typography>
         </section>
       </section>
     </article>
-  )
+  );
 }
 
-export default DonationHistory
+export default DonationHistory;

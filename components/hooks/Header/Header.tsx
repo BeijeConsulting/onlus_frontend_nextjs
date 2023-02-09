@@ -45,7 +45,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { color } from "../../../utils/type";
 
 // img
-import logo from "../../../giraffeImg.jpg";
+import logo from "@/images/giraffeImg.jpg";
 
 interface HeaderProps {
   isHome?: boolean;
@@ -80,7 +80,7 @@ const Header: FC<HeaderProps> = (props) => {
 
   const router: any = useRouter();
 
-  const { t, i18n }: any = useTranslation("common");
+  const { t }: any = useTranslation("common");
   const homeTrans = t("nav.home");
   const aboutTrans = t("nav.about");
   const eventsTrans = t("nav.events");
@@ -89,7 +89,7 @@ const Header: FC<HeaderProps> = (props) => {
   const infoTrans = t("nav.info");
   const logoutTrans = t("nav.logout");
   const logoutSenTrans = t("nav.logoutSentence");
-  const historyTrans = t("nav.history")
+  const historyTrans = t("nav.history");
 
   // mediaquery
   const [DesktopContainer, MobileContainer] = useResponsive();

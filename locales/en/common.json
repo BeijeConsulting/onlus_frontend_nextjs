@@ -1,19 +1,168 @@
 {
-    "nav": {
-        "home": "Home",
-        "about": "About us",
-        "events": "Events",
-        "blog": "Blog",
-        "supportUs": "Support us",
-        "info": "Info",
-        "logout": "Logout",
-        "logoutSentence": "Are you sure you want to logout of your account?"
-    },
-    "footer": {
-        "contacts": "Contacts",
-        "terms": "Terms and conditions",
-        "privacyPolicy": "Privacy policy",
-        "cookiePolicy": "Cookie policy",
-        "rightReserved": "© Onlus - 2022 - All rights reserved"
-    }
+  "search": "Search by title",
+  "selectCategory": "Select category",
+  "dateFormat": "en-EN",
+  "confirm": "Confirm",
+
+  "nav": {
+    "home": "Home",
+    "about": "About us",
+    "events": "Events",
+    "blog": "Blog",
+    "supportUs": "Support us",
+    "info": "Info",
+    "logout": "Logout",
+    "logoutSentence": "Are you sure you want to logout of your account?",
+    "history": "History"
+  },
+
+  "metaTitles": {
+    "home": "Home",
+    "about": "About us",
+    "blog": "Blog",
+    "donate": "Donate",
+    "confirmDonate": "Congratulations!",
+    "events": "Events",
+    "faq": "Frequently Asked Questions",
+    "login": "Login",
+    "notFound": "Page not found",
+    "personalArea": "Personal area",
+    "signup": "Sign up",
+    "support": "Support us",
+    "resetPassword": "Reset Password"
+  },
+
+  "titles": {
+    "eventsTitle": "Coming soon",
+    "blogTitle": "News",
+    "faqTitle": "Faq",
+    "loginTitle": "Login",
+    "signupTitle": "Sign up"
+  },
+
+  "buttons": {
+    "donateButton": "Donate now",
+    "volunteerButton": "Become a volunteer",
+    "loginButton": "Login",
+    "signupButton": "Sign up",
+    "confirmButton": "Confirm donation",
+    "continueReadingButton": "Continue reading",
+    "supportNavButton": "Support onlus",
+    "bookButton": "Book",
+    "modifyButton": "Apply Changes",
+    "disableAccount": "Disable Account",
+    "cancelBooking": "Cancel",
+    "backToHome": "Back to Home"
+  },
+
+  "footer": {
+    "contacts": "Contacts",
+    "terms": "Terms and conditions",
+    "privacyPolicy": "Privacy policy",
+    "cookiePolicy": "Cookie policy",
+    "rightReserved": "© Onlus - 2022 - All rights reserved"
+  },
+
+  "preFooter": {
+    "title": "Join us!",
+    "caption": "Do you want to work with us? Contact us at this email:"
+  },
+
+  "home": {
+    "latestNews": "Latest news",
+    "relatedArticles": "Related articles",
+    "stayUpToDate": "Stay up to date",
+    "followUs": "Follow us on ",
+    "history": "History"
+  },
+
+  "events": {
+    "description": "Description",
+    "requirements": "Requirements",
+    "bookingSuccess": "The booking was successful",
+    "bookingError": "Error during the booking",
+    "cancelSuccess": "Booking cancelled successfully"
+  },
+
+  "login": {
+    "name": "Name",
+    "surname": "Surname",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "phone": "Telephone",
+    "language": "Language",
+    "italian": "Italian",
+    "english": "English",
+    "acceptTerms": "I accept the terms and conditions",
+    "cf": "Tax code",
+    "dateOfBirth": "Date of birth",
+    "privacyTerms": "I have read and accept the terms of the Privacy Policy",
+
+    "forgottenPassword": "Forgot password?",
+    "notRegistered": "Not yet registered?",
+    "alreadyRegistered": "Already registered?",
+
+    "alreadyExist": "User already registered",
+    "signupSuccess": "User registered successfully"
+  },
+
+  "forgotPassword": {
+    "resetPassword": "Reset your password",
+    "labelReset": "Enter a valid email",
+    "clickReset": "Reset password"
+  },
+
+  "personalArea": {
+    "myInfo": "Personal data",
+    "donations": "Donations",
+    "save": "Save",
+    "welcome": "Welcome",
+    "programmedEvents": "Programmed events",
+    "pastEvents": "Past events",
+    "totalDonated": "Donations amount ",
+    "donationsHistory": "Donations history",
+    "personalData": "Personal data",
+    "paymentOption": "Payment options",
+    "donate": "Donate",
+    "disableSentence": "Do you want to deactivate your account?"
+  },
+
+  "donate": {
+    "holderName": "Name of holder",
+    "cardNumber": "Card number",
+    "expirationDate": "MM/YY",
+    "cvc": "CVC",
+    "amount": "Amount €"
+  },
+
+  "confirmDonate": {
+    "congrats": "Congratulations!",
+    "report": "You have donated"
+  },
+
+  "form": {
+    "errorName": "Enter a valid name",
+    "errorSurname": "Enter a valid surname",
+    "errorEmail": "Enter a valid email",
+    "errorPhone": "Enter a valid phone number",
+    "errorCf": "Enter a valid tax code",
+    "errorDateOfBirth": "Enter a valid date",
+    "errorPassword": "Enter a password at least 8 characters long, containing at least one capital letter, lowercase, number and special character",
+    "errorConfirmPassword": "The two passwords do not coincide",
+    "errorLogin": "Email or password wrong",
+    "accountDisabled": "Disabled account",
+    "serverError": "Server error, try again in a few minutes"
+  },
+
+  "error": {
+    "notFound": "Error",
+    "description": "We are sorry, internal server error"
+  },
+
+  "cookieBanner": {
+    "accept": "Accept",
+    "decline": "Decline",
+    "cookieSentence": "This website uses cookies to enhance the user experience"
+  }
 }

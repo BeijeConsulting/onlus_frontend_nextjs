@@ -1,4 +1,9 @@
 {
+  "search": "Cerca per titolo",
+  "selectCategory": "Seleziona categoria",
+  "dateFormat": "it-IT",
+  "confirm": "Conferma",
+
   "nav": {
     "home": "Home",
     "about": "Chi siamo",
@@ -10,11 +15,154 @@
     "logoutSentence": "Sei sicuro di voler uscire dal tuo account?",
     "history": "Storia"
   },
+
+  "metaTitles": {
+    "home": "Home",
+    "about": "Chi siamo",
+    "blog": "Blog",
+    "donate": "Dona",
+    "confirmDonate": "Congratulazioni!",
+    "events": "Eventi",
+    "faq": "Informazioni",
+    "login": "Accedi",
+    "notFound": "Pagina non trovata",
+    "personalArea": "Area personale",
+    "signup": "Registrati",
+    "support": "Supportaci",
+    "resetPassword": "Reset Password"
+  },
+
+  "titles": {
+    "eventsTitle": "Prossimamente",
+    "blogTitle": "Blog e notizie",
+    "faqTitle": "Faq",
+    "loginTitle": "Login",
+    "signupTitle": "Registrati"
+  },
+
+  "buttons": {
+    "donateButton": "Dona ora",
+    "volunteerButton": "Diventa volontario",
+    "loginButton": "Accedi",
+    "signupButton": "Registrati",
+    "confirmButton": "Conferma donazione",
+    "continueReadingButton": "Continua a leggere",
+    "supportNavButton": "Sostieni onlus",
+    "bookButton": "Prenota",
+    "modifyButton": "Salva modifiche",
+    "disableAccount": "Disattiva Account",
+    "cancelBooking": "Disdici",
+    "backToHome": "Torna alla Home"
+  },
+
   "footer": {
     "contacts": "Contatti",
     "terms": "Termini e condizioni",
     "privacyPolicy": "Privacy policy",
     "cookiePolicy": "Cookie policy",
     "rightReserved": "© Onlus - 2022 - All rights reserved"
+  },
+
+  "preFooter": {
+    "title": "Unisciti a noi!",
+    "caption": "Vuoi lavorare con noi? Contattaci a questa Email:"
+  },
+
+  "home": {
+    "latestNews": "Ultime notizie",
+    "relatedArticles": "Articoli correlati",
+    "stayUpToDate": "Rimani aggiornato",
+    "followUs": "Seguici su ",
+    "history": "Storia"
+  },
+
+  "events": {
+    "description": "Descrizione",
+    "requirements": "Requisiti",
+    "bookingSuccess": "La prenotazione é avvenuta con successo",
+    "bookingError": "Errore durante la prenotazione",
+    "cancelSuccess": "Prenotazione cancellata"
+  },
+
+  "login": {
+    "name": "Nome",
+    "surname": "Cognome",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Conferma password",
+    "phone": "Telefono",
+    "language": "Lingua",
+    "italian": "Italiano",
+    "english": "Inglese",
+    "acceptTerms": "Accetto i termini e le condizioni",
+    "cf": "Codice fiscale",
+    "dateOfBirth": "Data di nascita",
+    "privacyTerms": "Ho letto e accetto le condizioni dell’informativa sulla Privacy",
+
+    "forgottenPassword": "Password dimenticata?",
+    "notRegistered": "Non hai un account?",
+    "alreadyRegistered": "Hai già un account?",
+
+    "alreadyExist": "Utente già registrato",
+    "signupSuccess": "Utente registrato con successo"
+  },
+
+  "forgotPassword": {
+    "resetPassword": "Reimposta la tua password",
+    "labelReset": "Inserisci la tua mail",
+    "clickReset": "Reset password"
+  },
+
+  "personalArea": {
+    "myInfo": "I miei dati",
+    "donations": "Donazioni",
+    "save": "Salva modifiche",
+    "welcome": "Benvenuto",
+    "programmedEvents": "Eventi in programma",
+    "pastEvents": "Eventi passati",
+    "totalDonated": "In totale hai donato ",
+    "donationsHistory": "Storico donazioni",
+    "donate": "Dona",
+    "personalData": "Dati anagrafici",
+    "paymentOption": "Modalità di pagamento",
+    "disableSentence": "Vuoi disabilitare l'account?"
+  },
+
+  "donate": {
+    "holderName": "Nome intestatario",
+    "cardNumber": "Numero carta",
+    "expirationDate": "MM/AA",
+    "cvc": "CVC",
+    "amount": "Importo €"
+  },
+
+  "confirmDonate": {
+    "congrats": "Congratulazioni!",
+    "report": "Hai donato"
+  },
+
+  "form": {
+    "errorName": "Inserire un nome valido",
+    "errorSurname": "Inserire un cognome valido",
+    "errorEmail": "Inserire un'email valida",
+    "errorPhone": "Inserire un numero di telefono valido",
+    "errorCf": "Inserire un codice fiscale valido",
+    "errorDateOfBirth": "Inserire una data valida",
+    "errorPassword": "Inserire una password lunga almeno 8 caratteri, contenente almeno una lettera maiuscola, minuscola, numero e carattere speciale",
+    "errorConfirmPassword": "Le due password non coincidono",
+    "errorLogin": "Email o password errati",
+    "accountDisabled": "Account disabilitato",
+    "serverError": "Errore del server, riprovare tra alcuni minuti"
+  },
+
+  "error": {
+    "notFound": "Errore",
+    "description": "Il server non risponde. Ci scusiamo per il disagio"
+  },
+
+  "cookieBanner": {
+    "accept": "Accetto",
+    "decline": "Rifiuta",
+    "cookieSentence": "Questo sito utilizza i cookie per migliorare l'esperienza dell'utente"
   }
 }

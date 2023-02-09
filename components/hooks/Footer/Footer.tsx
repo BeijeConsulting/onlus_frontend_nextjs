@@ -60,17 +60,19 @@ const Footer: FC = () => {
 
   // tranlation hook
   const { t }: any = useTranslation("common");
-  const homeTrans = t("nav.home");
-  const aboutTrans = t("nav.about");
-  const eventsTrans = t("nav.events");
-  const blogTrans = t("nav.blog");
-  const supportTrans = t("nav.supportUs");
-  const infoTrans = t("nav.info");
-  const contactsTrans = t("footer.contacts")
-  const termsTrans = t("footer.terms")
-  const privacyTrans = t("footer.privacyPolicy")
-  const cookieTrans = t("footer.cookiePolicy")
-  const rightTrans = t("footer.rightReserved")
+  const LANG: any = {
+    homeTrans: t("nav.home"),
+    aboutTrans: t("nav.about"),
+    eventsTrans: t("nav.events"),
+    blogTrans: t("nav.blog"),
+    supportTrans: t("nav.supportUs"),
+    infoTrans: t("nav.info"),
+    contactsTrans: t("footer.contacts"),
+    termsTrans: t("footer.terms"),
+    privacyTrans: t("footer.privacyPolicy"),
+    cookieTrans: t("footer.cookiePolicy"),
+    rightTrans: t("footer.rightReserved"),
+  };
 
   const mapping = (el: social, key: number): JSX.Element | boolean => {
     if (el.footerOn) {
@@ -98,7 +100,7 @@ const Footer: FC = () => {
           className={styles.contacts}
         >
           <Typography variant="h5" className={styles.titleContacts}>
-            {contactsTrans}
+            {LANG.contactsTrans}
           </Typography>
           <ul>
             <li>
@@ -148,22 +150,22 @@ const Footer: FC = () => {
             className={styles.nav}
           >
             <Typography variant="body2" onClick={goTo(SCREENS.home)}>
-              {homeTrans}
+              {LANG.homeTrans}
             </Typography>
             <Typography variant="body2" onClick={goTo(SCREENS.about)}>
-              {aboutTrans}
+              {LANG.aboutTrans}
             </Typography>
             <Typography variant="body2" onClick={goTo(SCREENS.events)}>
-              {eventsTrans}
+              {LANG.eventsTrans}
             </Typography>
             <Typography variant="body2" onClick={goTo(SCREENS.blog)}>
-              {blogTrans}
+              {LANG.blogTrans}
             </Typography>
             <Typography variant="body2" onClick={goTo(SCREENS.support)}>
-              {supportTrans}
+              {LANG.supportTrans}
             </Typography>
             <Typography variant="body2" onClick={goTo(SCREENS.faq)}>
-              {infoTrans}
+              {LANG.infoTrans}
             </Typography>
           </section>
         </DesktopContainer>
@@ -171,13 +173,13 @@ const Footer: FC = () => {
         <section className={styles.privacy}>
           <div className={styles.privacyContainer}>
             <Link href="#">
-              <Typography variant="body2">{privacyTrans} </Typography>
+              <Typography variant="body2">{LANG.privacyTrans} </Typography>
             </Link>
             <Link href="#">
-              <Typography variant="body2">{cookieTrans} </Typography>
+              <Typography variant="body2">{LANG.cookieTrans} </Typography>
             </Link>
             <Link href="#">
-              <Typography variant="body2">{termsTrans} </Typography>
+              <Typography variant="body2">{LANG.termsTrans} </Typography>
             </Link>
           </div>
           {!isLogged && (
@@ -194,7 +196,7 @@ const Footer: FC = () => {
       </div>
 
       <Typography variant="body2" className={styles.rightReserved}>
-        {rightTrans}
+        {LANG.rightTrans}
       </Typography>
     </footer>
   );

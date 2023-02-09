@@ -43,8 +43,14 @@ const initialState = {
 }
 
 const ExpandButton: FC = () => {
-  //i18n
-  const { t }: any = useTranslation()
+  
+  const { t }: any = useTranslation('common');
+  const LANG: any = {
+    supportNavButton: t("buttons.supportNavButton"),
+    donateButton: t("buttons.donateButton"),
+    volunteerButton: t("buttons.volunteerButton"),
+  };
+
   const [state, setState] = useState<State>(initialState)
   const anchorRef = useRef<HTMLDivElement>(null)
 
@@ -100,7 +106,7 @@ const ExpandButton: FC = () => {
           `}
         >
           <Typography variant="button" color="primary">
-            {t("buttons.supportNavButton")}
+            {LANG.supportNavButton}
           </Typography>
           <ArrowDropDownIcon color="primary" />
         </Button>
@@ -136,7 +142,7 @@ const ExpandButton: FC = () => {
                     onClick={goToDonate}
                     sx={{ color: PALETTE[2].textColor }}
                   >
-                    {t("buttons.donateButton")}
+                    {LANG.donateButton}
                     <TbHeartHandshake />
                   </MenuItem>
 
@@ -145,7 +151,7 @@ const ExpandButton: FC = () => {
                     onClick={goToSignup}
                     sx={{ color: PALETTE[2].textColor }}
                   >
-                    {t("buttons.volunteerButton")}
+                    {LANG.volunteerButton}
                     <BiDonateHeart />
                   </MenuItem>
                 </MenuList>

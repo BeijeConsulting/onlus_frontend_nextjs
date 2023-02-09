@@ -53,7 +53,7 @@ import { hexToRGB } from "@/utils/hexToRGB";
 import { checkEventDate } from "@/utils/checkForm";
 
 //asstets
-import logo from "../giraffeImg.png";
+import logo from "@/images/giraffeImg.png";
 
 //cookies
 import { getCookie, setCookie } from "cookies-next";
@@ -205,7 +205,7 @@ const Home = ({
   //   return;
   // };
   return (
-    <I18nProvider lang="it" namespaces={{ common }}>
+    <>
       <Layout>
         <div style={{ height: 300, background: "red" }} id="events"></div>
         <div style={{ height: 300, background: "yellow" }} id="blog">
@@ -222,7 +222,7 @@ const Home = ({
           />
         </div>
       </Layout>
-    </I18nProvider>
+    </>
   );
 };
 export default Home;

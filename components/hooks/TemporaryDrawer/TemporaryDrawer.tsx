@@ -56,13 +56,15 @@ const TemporaryDrawer: FC = () => {
   const router: any = useRouter()
 
   //i18n
-  const { t }: any = useTranslation('common')
-  const homeTrans = t("nav.home");
-  const aboutTrans = t("nav.about");
-  const eventsTrans = t("nav.events");
-  const blogTrans = t("nav.blog");
-  const supportTrans = t("nav.supportUs");
-  const infoTrans = t("nav.info");
+  const { t }: any = useTranslation('common');
+  const LANG: any = {
+    homeTrans: t("nav.home"),
+    aboutTrans: t("nav.about"),
+    eventsTrans: t("nav.events"),
+    blogTrans: t("nav.blog"),
+    supportTrans: t("nav.supportUs"),
+    infoTrans: t("nav.info"),
+  };
 
   const toggleDrawer = (open: any) => (event: any) => {
     if (
@@ -86,22 +88,22 @@ const TemporaryDrawer: FC = () => {
   //Navigation from sidebar
   const navigationFromSidebar = (text: string) => (): any => {
     switch (text) {
-      case homeTrans:
+      case LANG.homeTrans:
         router.push(SCREENS.home)
         break
-      case aboutTrans:
+      case LANG.aboutTrans:
         router.push(SCREENS.about)
         break
-      case eventsTrans:
+      case LANG.eventsTrans:
         router.push(SCREENS.events)
         break
-      case blogTrans:
+      case LANG.blogTrans:
         router.push(SCREENS.blog)
         break
-      case supportTrans:
+      case LANG.supportTrans:
         router.push(SCREENS.support)
         break
-      case infoTrans:
+      case LANG.infoTrans:
         router.push(SCREENS.faq)
         break
 
@@ -124,12 +126,12 @@ const TemporaryDrawer: FC = () => {
 
       <List className={styles.navContainer}>
         {[
-          homeTrans,
-          aboutTrans,
-          eventsTrans,
-          blogTrans,
-          supportTrans,
-          infoTrans,
+          LANG.homeTrans,
+          LANG.aboutTrans,
+          LANG.eventsTrans,
+          LANG.blogTrans,
+          LANG.supportTrans,
+          LANG.infoTrans,
         ].map((text, index) => (
           <ListItem
             key={text}

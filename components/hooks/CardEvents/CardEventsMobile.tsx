@@ -1,81 +1,87 @@
-import { useState, FC } from "react"
-import { styled } from "@mui/material/styles"
-import Card from "@mui/material/Card"
-import CardMedia from "@mui/material/CardMedia"
-import CardContent from "@mui/material/CardContent"
-import CardActions from "@mui/material/CardActions"
-import Collapse from "@mui/material/Collapse"
-import IconButton, { IconButtonProps } from "@mui/material/IconButton"
-import Typography from "@mui/material/Typography"
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import { useState, FC } from "react";
+import { styled } from "@mui/material/styles";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import Collapse from "@mui/material/Collapse";
+import IconButton, { IconButtonProps } from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 // components
-import CustomButton from "../../ui/buttons/CustomButton/CustomButton"
+import CustomButton from "../../ui/buttons/CustomButton/CustomButton";
 
 // translation
-import useTranslation from "next-translate/useTranslation"
-import useResponsive from "../../../utils/useResponsive"
-import { useSelector } from "react-redux"
+import useTranslation from "next-translate/useTranslation";
+import useResponsive from "../../../utils/useResponsive";
+import { useSelector } from "react-redux";
 
 // style
-import styles from "./cardEvents.module.scss"
+import styles from "./cardEvents.module.scss";
 
-import noImage from "../../../assets/images/no-image.jpg"
+import noImage from "../../../assets/images/no-image.jpg";
 
 // interfaccia
 interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean
+  expand: boolean;
 }
 
 // props
 interface CardProps {
-  id?: number
-  title: string
-  image: string
-  description: string
-  requirement: string
-  date: string
-  place: string
-  minWidth?: string
-  opaque: boolean
-  callbackBook?: Function
-  attendants?: Array<string> | undefined
-  callbackCancel?: Function
+  id?: number;
+  title: string;
+  image: string;
+  description: string;
+  requirement: string;
+  date: string;
+  place: string;
+  minWidth?: string;
+  opaque: boolean;
+  callbackBook?: Function;
+  attendants?: Array<string> | undefined;
+  callbackCancel?: Function;
 }
 
 const ExpandMore = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props
-  return <IconButton {...other} />
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
 })(({ theme, expand }) => ({
   transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
   marginLeft: "auto",
   transition: theme.transitions.create("transform", {
     duration: theme.transitions.duration.shortest,
   }),
-}))
+}));
 
 const CardEventsMobile: FC<CardProps> = (props) => {
   // tranlation hook
-  const { t }: any = useTranslation()
+  const { t }: any = useTranslation("common");
+  const LANG: any = {
+    description: t("events.description"),
+    requirement: t("events.requirements"),
+    cancelBooking: t("buttons.cancelBooking"),
+    bookButton: t("buttons.bookButton"),
+  };
 
   //reponsive
-  let [Mobile, Default] = useResponsive()
+  let [Mobile, Default] = useResponsive();
 
-  const USER: any = useSelector((state: any) => state.userDuck.userData)
+  const USER: any = useSelector((state: any) => state.userDuck.userData);
 
   // stato
-  const [expanded, setExpanded] = useState(false)
+  const [expanded, setExpanded] = useState(false);
   // estende pannello
   const handleExpandClick = () => {
-    setExpanded(!expanded)
-  }
+    setExpanded(!expanded);
+  };
   // naviga
   const goToBooking = (): void => {
-    if (!!props.callbackBook) props.callbackBook()
-  }
+    if (!!props.callbackBook) props.callbackBook();
+  };
   const cancelBooking = (): void => {
-    if (!!props.callbackCancel) props.callbackCancel(props.id)
-  }
+    if (!!props.callbackCancel) props.callbackCancel(props.id);
+  };
 
   return (
     <Card
@@ -140,14 +146,14 @@ const CardEventsMobile: FC<CardProps> = (props) => {
                 <CustomButton
                   colorType={"secondary"}
                   callback={cancelBooking}
-                  label={t("buttons.cancelBooking")}
+                  label={LANG.cancelBooking}
                   size={"small"}
                 />
               ) : (
                 <CustomButton
                   colorType={"success"}
                   callback={goToBooking}
-                  label={t("buttons.bookButton")}
+                  label={LANG.bookButton}
                   size={"small"}
                 />
               ))}
@@ -176,7 +182,7 @@ const CardEventsMobile: FC<CardProps> = (props) => {
             variant="h3"
             sx={{ padding: "0px", marginBottom: "10px" }}
           >
-            {t("events.description")}
+            {LANG.description}
           </Typography>
           <Typography paragraph variant="body1">
             {props.description}
@@ -185,7 +191,7 @@ const CardEventsMobile: FC<CardProps> = (props) => {
             variant="h3"
             sx={{ padding: "0px", marginBottom: "10px" }}
           >
-            {t("events.requirements")}
+            {LANG.requirement}
           </Typography>
           <Typography paragraph variant="body1">
             {props.requirement}
@@ -195,21 +201,21 @@ const CardEventsMobile: FC<CardProps> = (props) => {
               <CustomButton
                 colorType={"secondary"}
                 callback={cancelBooking}
-                label={t("buttons.cancelBooking")}
+                label={LANG.cancelBooking}
                 size={"small"}
               />
             ) : (
               <CustomButton
                 colorType={"success"}
                 callback={goToBooking}
-                label={t("buttons.bookButton")}
+                label={LANG.bookButton}
                 size={"small"}
               />
             ))}
         </CardContent>
       </Collapse>
     </Card>
-  )
-}
+  );
+};
 
-export default CardEventsMobile
+export default CardEventsMobile;

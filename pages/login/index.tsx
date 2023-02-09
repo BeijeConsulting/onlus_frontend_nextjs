@@ -55,7 +55,15 @@ function Login() {
     (state: any) => state.userDuck.isLoggedIn
   );
   const router: any = useRouter();
-  const { t }: any = useTranslation();
+  const { t }: any = useTranslation("common");
+  const LANG: any = {
+    login: t("login.email"),
+    password: t("login.password"),
+    forgotPassword: t("login.forgottenPassword"),
+    loginButton: t("buttons.loginButton"),
+    notRegistered: t("login.notRegistered"),
+    signUp: t("buttons.signupButton"),
+  };
 
   const PALETTE: Array<color> = useSelector(
     (state: any) => state.generalDuck.palette
@@ -131,13 +139,13 @@ function Login() {
           <Typography variant="h1">{t("titles.loginTitle")}</Typography>
           <form className={styles.loginContainer} onSubmit={login}>
             <InputBox
-              label={t("login.email")}
+              label={LANG.login}
               type={"mail"}
               callbackChange={getEmail}
               notValid={state.errorLogin}
             />
             <InputBox
-              label={t("login.password")}
+              label={LANG.password}
               type={"password"}
               callbackChange={getPsw}
               notValid={state.errorLogin}
@@ -149,27 +157,21 @@ function Login() {
               className={styles.forgotPassword}
               style={{ color: PALETTE[2].textColor }}
             >
-              <Typography variant="caption">
-                {t("login.forgottenPassword")}
-              </Typography>
+              <Typography variant="caption">{LANG.forgotPassword}</Typography>
             </Link>
 
             <CustomButton
               size={"big"}
               callback={login}
               colorType="primary"
-              label={t("buttons.loginButton")}
+              label={LANG.loginButton}
             />
           </form>
 
           <div className={styles.asideSection}>
-            <Typography variant="caption">
-              {t("login.notRegistered")}
-            </Typography>
+            <Typography variant="caption">{LANG.notRegistered}</Typography>
             <Link href={SCREENS.signup} style={{ color: PALETTE[2].textColor }}>
-              <Typography variant="caption">
-                {t("buttons.signupButton")}
-              </Typography>
+              <Typography variant="caption">{LANG.signUp}</Typography>
             </Link>
           </div>
         </main>

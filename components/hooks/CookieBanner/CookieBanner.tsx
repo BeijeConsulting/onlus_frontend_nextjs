@@ -1,27 +1,33 @@
-import { FC } from "react"
+import { FC } from "react";
 // import cookie library
-import CookieConsent from "react-cookie-consent"
+import CookieConsent from "react-cookie-consent";
 // import redux
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 // translation
-import useTranslation from "next-translate/useTranslation"
+import useTranslation from "next-translate/useTranslation";
 // type
-import { color } from "../../../utils/type"
+import { color } from "../../../utils/type";
 
 const CookieBanner: FC = () => {
-  const { t }: any = useTranslation()
+  const { t }: any = useTranslation("common");
+  const LANG: any = {
+    accept: t("cookieBanner.accept"),
+    decline: t("cookieBanner.decline"),
+    cookieSentence: t("cookieBanner.cookieSentence"),
+  };
+
   const PALETTE: Array<color> = useSelector(
     (state: any) => state.generalDuck.palette
-  )
+  );
 
   return (
     <CookieConsent
       flipButtons
       overlay={true}
       location="bottom"
-      buttonText={t("cookieBanner.accept")}
+      buttonText={LANG.accept}
       enableDeclineButton
-      declineButtonText={t("cookieBanner.decline")}
+      declineButtonText={LANG.decline}
       style={{
         background: PALETTE[0].bgColor,
         color: PALETTE[0].textColor,
@@ -43,9 +49,9 @@ const CookieBanner: FC = () => {
       }}
       expires={150}
     >
-      {t("cookieBanner.cookieSentence")}
+      {LANG.cookieSentence}
     </CookieConsent>
-  )
-}
+  );
+};
 
-export default CookieBanner
+export default CookieBanner;

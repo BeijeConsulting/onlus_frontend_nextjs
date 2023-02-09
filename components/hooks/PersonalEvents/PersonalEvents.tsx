@@ -47,7 +47,14 @@ const initialState = {
 }
 
 const PersonalEvents: FC<Props> = (props) => {
-  const { t }: any = useTranslation()
+  const { t }: any = useTranslation('common');
+  const LANG: any = {
+    cancelSuccess: t("events.cancelSuccess"),
+    bookingError: t("events.bookingError"),
+    programmedEvents: t("personalArea.programmedEvents"),
+    pastEvents: t("personalArea.pastEvents"),
+  };
+
   const [state, setState] = useState<State>(initialState)
   const userEmail: string = useSelector(
     (state: any) => state.userDuck.userData.email
@@ -98,11 +105,11 @@ const PersonalEvents: FC<Props> = (props) => {
     switch (response.status) {
       case 200:
         open = true
-        message = t("events.cancelSuccess")
+        message = LANG.cancelSuccess
         break
       default:
         open = true
-        message = t("events.bookingError")
+        message = LANG.bookingError
         break
     }
     setState({
@@ -174,7 +181,7 @@ const PersonalEvents: FC<Props> = (props) => {
     <article className={styles.eventsSection}>
       <section className={styles.eventSection}>
         <Typography variant="h3" sx={{ paddingBottom: "25px" }}>
-          {t("personalArea.programmedEvents")}
+          {LANG.programmedEvents}
         </Typography>
         <section className={styles.cardsContainer}>
           {state.futureEvents?.map(mapEvents(false))}
@@ -182,7 +189,7 @@ const PersonalEvents: FC<Props> = (props) => {
       </section>
       <section className={styles.eventSection}>
         <Typography variant="h3" sx={{ paddingBottom: "25px" }}>
-          {t("personalArea.pastEvents")}
+          {LANG.pastEvents}
         </Typography>
         <section className={styles.cardsContainer}>
           {state.pastEvents?.map(mapEvents(true))}

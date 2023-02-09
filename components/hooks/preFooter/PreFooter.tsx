@@ -17,7 +17,10 @@ const PreFooter: FC = () => {
   const BANNER = useSelector((state: any) => state.generalDuck.sectionWork);
 
   // tranlation hook
-  const { t }: any = useTranslation();
+  const { t }: any = useTranslation('common');
+  const LANG: any = {
+    caption: t("preFooter.caption"),
+  };
   
 
   return (
@@ -26,7 +29,7 @@ const PreFooter: FC = () => {
         <img src={LOGO} alt="" />
       </div>
       <div className={styles.infoContact}>
-        <Typography variant="body1">{t("preFooter.caption")}</Typography>
+        <Typography variant="body1">{LANG.caption}</Typography>
         {!!BANNER && (
           <Typography variant="subtitle1">{BANNER.email}</Typography>
         )}

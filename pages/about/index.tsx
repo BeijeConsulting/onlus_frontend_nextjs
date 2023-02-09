@@ -1,34 +1,34 @@
-import { useState, useEffect, FC } from "react"
+import { useState, useEffect, FC } from "react";
 
 //axios
-import { getAbout } from "@/services/api/aboutAPI"
+import { getAbout } from "@/services/api/aboutAPI";
 
 // i18n
-import useTranslation from "next-translate/useTranslation"
+import useTranslation from "next-translate/useTranslation";
 
 //Components
-import Hero from "@/components/hooks/Hero/Hero"
-import JoinUs from "@/components/hooks/joinUsBbox/JoinUsBox"
-import Layout from "@/components/ui/Layout/Layout"
-import Image from "next/image"
+import Hero from "@/components/hooks/Hero/Hero";
+import JoinUs from "@/components/hooks/joinUsBbox/JoinUsBox";
+import Layout from "@/components/ui/Layout/Layout";
+import Image from "next/image";
 
 //type
-import { content } from "@/utils/type"
+import { content } from "@/utils/type";
 
 //Styles
-import styles from "@/styles/about.module.scss"
+import styles from "@/styles/about.module.scss";
 
 //mui
-import { Typography, Skeleton } from "@mui/material"
+import { Typography, Skeleton } from "@mui/material";
 
-import giraffa from "@/giraffeImg.jpg"
+import giraffa from "@/giraffeImg.jpg";
 
 interface State {
-  imageHero: string
-  titleHero: string
-  titleScreen: string
-  pageIsLoaded: boolean
-  content: Array<content>
+  imageHero: string;
+  titleHero: string;
+  titleScreen: string;
+  pageIsLoaded: boolean;
+  content: Array<content>;
 }
 
 const initialState: State = {
@@ -37,29 +37,33 @@ const initialState: State = {
   titleScreen: "",
   pageIsLoaded: false,
   content: [],
-}
+};
 
 const About: FC = () => {
-  const { t }: any = useTranslation()
-  const [state, setState] = useState<State>(initialState)
+  const [state, setState] = useState<State>(initialState);
 
   useEffect(() => {
-    fetchDatas()
-  }, [])
+    fetchDatas();
+  }, []);
+
+  const { t }: any = useTranslation("common");
+  const LANG: any = {
+    about: t("nav.about"),
+  };
 
   async function fetchDatas() {
-    let about: boolean = false
-    let result: any = await getAbout()
+    let about: boolean = false;
+    let result: any = await getAbout();
     if (!!result.data.hero && !!result.data.content && !!result.data.title)
-      about = true
-    else return
+      about = true;
+    else return;
     setState({
       pageIsLoaded: about,
       imageHero: result.data.hero.mediaContent,
       titleHero: result.data.hero.text,
       content: result.data.content,
       titleScreen: result.data.title.title,
-    })
+    });
   }
 
   const mappingContent = (item: content, key: number) => {
@@ -85,8 +89,8 @@ const About: FC = () => {
           </div>
         )}
       </section>
-    )
-  }
+    );
+  };
 
   return (
     <Layout>
@@ -109,7 +113,7 @@ const About: FC = () => {
             <Hero type={"about"} />
           </Skeleton>
           <section className="sectionContainer">
-            <Typography variant="h1">{t("nav.about")}</Typography>
+            <Typography variant="h1">{LANG.about}</Typography>
 
             <section className={styles.contentAboutContainer}>
               <Typography variant="body1">
@@ -132,7 +136,7 @@ const About: FC = () => {
 
       <JoinUs supportBox={true} />
     </Layout>
-  )
-}
+  );
+};
 
-export default About
+export default About;
