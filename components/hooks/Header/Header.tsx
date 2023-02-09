@@ -81,15 +81,17 @@ const Header: FC<HeaderProps> = (props) => {
   const router: any = useRouter();
 
   const { t }: any = useTranslation("common");
-  const homeTrans = t("nav.home");
-  const aboutTrans = t("nav.about");
-  const eventsTrans = t("nav.events");
-  const blogTrans = t("nav.blog");
-  const supportTrans = t("nav.supportUs");
-  const infoTrans = t("nav.info");
-  const logoutTrans = t("nav.logout");
-  const logoutSenTrans = t("nav.logoutSentence");
-  const historyTrans = t("nav.history");
+  const LANG: any = {
+    home: t("nav.home"),
+    about: t("nav.about"),
+    events: t("nav.events"),
+    blog: t("nav.blog"),
+    support: t("nav.supportUs"),
+    info: t("nav.info"),
+    logout: t("nav.logout"),
+    logoutSentence: t("nav.logoutSentence"),
+    history: t("nav.history"),
+  };
 
   // mediaquery
   const [DesktopContainer, MobileContainer] = useResponsive();
@@ -201,7 +203,7 @@ const Header: FC<HeaderProps> = (props) => {
           <nav className={styles.navDesktop}>
             <NavLink exact href={SCREENS.home}>
               <Typography variant="body2">
-                {homeTrans}
+                {LANG.home}
                 <span
                   className={styles.underline}
                   style={{ background: PALETTE[0].textColor }}
@@ -211,7 +213,7 @@ const Header: FC<HeaderProps> = (props) => {
 
             <NavLink exact href={SCREENS.about}>
               <Typography variant="body2">
-                {aboutTrans}
+                {LANG.about}
                 <span
                   className={styles.underline}
                   style={{ background: PALETTE[0].textColor }}
@@ -221,7 +223,7 @@ const Header: FC<HeaderProps> = (props) => {
 
             <NavLink exact href={SCREENS.events}>
               <Typography variant="body2">
-                {eventsTrans}
+                {LANG.events}
                 <span
                   className={styles.underline}
                   style={{ background: PALETTE[0].textColor }}
@@ -231,7 +233,7 @@ const Header: FC<HeaderProps> = (props) => {
 
             <NavLink exact href={SCREENS.blog}>
               <Typography variant="body2">
-                {blogTrans}
+                {LANG.blog}
                 <span
                   className={styles.underline}
                   style={{ background: PALETTE[0].textColor }}
@@ -241,7 +243,7 @@ const Header: FC<HeaderProps> = (props) => {
 
             <NavLink exact href={SCREENS.support}>
               <Typography variant="body2">
-                {supportTrans}
+                {LANG.support}
                 <span
                   className={styles.underline}
                   style={{ background: PALETTE[0].textColor }}
@@ -251,7 +253,7 @@ const Header: FC<HeaderProps> = (props) => {
 
             <NavLink exact href={SCREENS.faq}>
               <Typography variant="body2">
-                {infoTrans}
+                {LANG.info}
                 <span
                   className={styles.underline}
                   style={{ background: PALETTE[0].textColor }}
@@ -323,7 +325,7 @@ const Header: FC<HeaderProps> = (props) => {
                             {t("metaTitles.personalArea")}
                           </MenuItem>
 
-                          <MenuItem onClick={openModal}>{logoutTrans}</MenuItem>
+                          <MenuItem onClick={openModal}>{LANG.logout}</MenuItem>
                         </MenuList>
                       ) : (
                         <MenuList id="split-button-menu">
@@ -350,7 +352,7 @@ const Header: FC<HeaderProps> = (props) => {
       <div className={styles.bottomHeader}>
         <a href="#events" className={styles.bottomHeaderButton}>
           <Typography variant="body2">
-            {eventsTrans}
+            {LANG.events}
             <span
               className={styles.underline}
               style={{ background: PALETTE[0].textColor }}
@@ -359,7 +361,7 @@ const Header: FC<HeaderProps> = (props) => {
         </a>
         <a href="#blog" className={styles.bottomHeaderButton}>
           <Typography variant="body2">
-            {blogTrans}
+            {LANG.blog}
             <span
               className={styles.underline}
               style={{ background: PALETTE[0].textColor }}
@@ -368,7 +370,7 @@ const Header: FC<HeaderProps> = (props) => {
         </a>
         <a href="#history" className={styles.bottomHeaderButton}>
           <Typography variant="body2">
-            {historyTrans}
+            {LANG.history}
             <span
               className={styles.underline}
               style={{ background: PALETTE[0].textColor }}
@@ -379,7 +381,7 @@ const Header: FC<HeaderProps> = (props) => {
 
       <GenericModal open={state.isOpenModal} callback={openModal}>
         <div className={styles.childrenModal}>
-          <Typography variant="caption">{logoutSenTrans}</Typography>
+          <Typography variant="caption">{LANG.logoutSentence}</Typography>
           <CustomButton
             label={t("confirm")}
             isDisable={false}
