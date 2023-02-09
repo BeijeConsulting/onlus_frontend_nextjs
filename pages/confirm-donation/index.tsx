@@ -1,7 +1,10 @@
 import { FC } from "react";
 
 //Components
+import Footer from "@/components/hooks/Footer/Footer"
+import Header from "@/components/hooks/Header/Header"
 import CustomButton from "@/components/ui/buttons/CustomButton/CustomButton";
+import PreFooter from "@/components/hooks/preFooter/PreFooter"
 
 //Styles
 import styles from "@/styles/confirmDonation.module.scss";
@@ -34,6 +37,8 @@ const ConfirmDonation: FC = () => {
 
   return (
     <>
+      <Header />
+
       <main
         id="confirmDonation"
         className={`sectionContainer ${styles.confirmDonation}`}
@@ -52,6 +57,9 @@ const ConfirmDonation: FC = () => {
           />
         </section>
       </main>
+
+      <PreFooter />
+      <Footer />
     </>
   );
 };
