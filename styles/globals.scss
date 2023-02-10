@@ -14,6 +14,7 @@
 
 body {
   overflow-x: hidden;
+  font-family: 'Noto Sans JP', sans-serif;;
 }
 
 ul,
@@ -140,5 +141,61 @@ h1 {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.arrowButton {
+  position: fixed;
+  z-index: 100;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 0.2s ease-in-out;
+  &.scrollToTopButton {
+    bottom: 20px;
+    right: 20px;
+  }
+  &.goBackButton {
+    top: 124px;
+    left: 20px;
+  }
+  &:hover {
+    transform: scale(105%);
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .arrowButton {
+    &.goBackButton {
+      left: 50px;
+    }
+  }
+}
+
+.mediaContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  &.mediaCardArticle{
+    height: 250px;
+  }
+  &.mediaArticle{
+    height: 300px;
+    margin: 20px 0;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .mediaContainer{
+    &.mediaArticle{
+      height: 600px;
+      margin: 50px 0;
+    }
   }
 }

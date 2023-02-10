@@ -6,8 +6,9 @@ import CardContent from "@mui/material/CardContent"
 import CardMedia from "@mui/material/CardMedia"
 import Typography from "@mui/material/Typography"
 import { CardActionArea, CardHeader } from "@mui/material"
+import Image from "next/image"
 
-import noImage from "../../../assets/images/no-image.jpg"
+import noImage from "@/images/no-image.jpg"
 
 interface CardProps {
   date: string
@@ -23,12 +24,9 @@ const CardArticle: FC<CardProps> = (props) => {
       <CardActionArea>
         <CardHeader subheader={props.date} sx={{ paddingBottom: "0px" }} />
         <CardContent>
-          <CardMedia
-            component="img"
-            // image={props.image ? props.image : noImage}
-            alt="green iguana"
-            sx={{ height: 250, objectFit: "cover" }}
-          />
+          <div className="mediaContainer mediaCardArticle">
+            <Image src={props.image ? props.image : noImage} fill alt="" />
+          </div>
           <Typography
             gutterBottom
             variant="h4"
