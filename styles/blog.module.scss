@@ -1,7 +1,8 @@
-#blog {
+.blog {
   .searchContainer {
     display: flex;
     flex-direction: column;
+    gap: 10px;
   }
   .cardsContainer {
     display: grid;
@@ -29,7 +30,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  #blog {
+  .blog {
     .searchContainer {
       flex-direction: row;
     }
@@ -39,7 +40,7 @@
   }
 }
 @media screen and (min-width: 1200px) {
-  #blog {
+  .blog {
     .cardsContainer {
       grid-template-columns: repeat(3, 1fr);
       gap: 40px;
@@ -47,7 +48,7 @@
   }
 }
 @media screen and (min-width: 1540px) {
-  #blog {
+  .blog {
     .cardsContainer {
       grid-template-columns: repeat(4, 1fr);
     }

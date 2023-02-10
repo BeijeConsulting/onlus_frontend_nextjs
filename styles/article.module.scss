@@ -1,5 +1,5 @@
 //mobile
-#article {
+.article {
   .paragraph {
     font-size: 16px;
     display: flex;
@@ -8,12 +8,6 @@
     .paragraphText {
       padding-top: 10px;
       padding-bottom: 10px;
-    }
-    .media {
-      padding: 20px 0;
-      width: 100%;
-      max-height: 700px;
-      object-fit: cover;
     }
     .video {
       padding: 20px 0;
@@ -33,9 +27,15 @@
   }
 }
 
+.heroCategory {
+  margin-bottom: 15px;
+  padding: 0 15px;
+  text-transform: uppercase;
+}
+
 //tablet
 @media screen and (min-width: 768px) {
-  #article {
+  .article {
     width: 100%;
     article {
       width: 65vw;
@@ -45,9 +45,6 @@
         font-size: 20px;
         display: flex;
         align-items: center;
-        .media {
-          padding: 50px 0;
-        }
         .video {
           padding: 50px 0;
         }
@@ -68,7 +65,7 @@
 
 //desktop
 @media screen and (min-width: 1200px) {
-  #article {
+  .article {
     .correlatedArticles {
       flex-direction: row;
     }

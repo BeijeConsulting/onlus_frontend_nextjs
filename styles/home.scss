@@ -1,31 +1,4 @@
-@import "./common.scss";
-
-.arrowButton {
-  position: fixed;
-  z-index: 100;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  transition: all 0.2s ease-in-out;
-  &.scrollToTopButton {
-    bottom: 20px;
-    right: 20px;
-  }
-  &.goBackButton {
-    top: 124px;
-    left: 20px;
-  }
-  &:hover {
-    transform: scale(105%);
-  }
-}
-
-#home {
+.home {
   section {
     padding: 25px 0;
 
@@ -88,7 +61,7 @@
 }
 
 @media only screen and (min-width: 767px) {
-  #home {
+  .home {
     section {
       padding: 50px 0;
       &.results {
@@ -96,13 +69,6 @@
           width: 300px;
         }
       }
-    }
-  }
-}
-@media only screen and (min-width: 992px) {
-  .arrowButton {
-    &.goBackButton {
-      left: 50px;
     }
   }
 }

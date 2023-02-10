@@ -104,7 +104,7 @@ const Hero: FC<HeroProps> = (props) => {
               style={{ background: "rgba(0,0,0,0.5)" }}
             >
               <div className={styles.heroContent}>
-                <div className={styles.heroCategory}>{props.category}</div>
+                <div className={styles.heroCategories}>{props.category}</div>
                 <Typography variant="h1" sx={{ color: PALETTE[0].textColor }}>
                   {props.title}
                 </Typography>

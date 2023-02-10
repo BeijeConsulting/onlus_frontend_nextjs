@@ -1,5 +1,7 @@
 import { FC } from "react"
-import { Link } from "react-router-dom"
+
+// navigation
+import Link from "next/link"
 
 //mui
 import { Typography } from "@mui/material"
@@ -18,7 +20,7 @@ const CorrelatedArticleCard: FC<CorrelatedArticleCardProps> = (props) => {
       <img src={props.cover} className={styles.image} />
       <div className={styles.titleContainer}>
         <Typography variant="body1">{props.title}</Typography>
-        <Link to="#">
+        <Link href="#">
           <Typography variant="overline">Continua a leggere...</Typography>
         </Link>
       </div>
