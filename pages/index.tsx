@@ -1,80 +1,80 @@
 // react
-import { useState, useEffect, FC } from "react";
+import { useState, useEffect, FC } from "react"
 
 //navigation
-import { useRouter } from "next/navigation";
-import SCREENS from "@/route/router";
-import Link from "next/link";
-import NavLink from "@/components/hooks/NavLink/NavLink";
+import { useRouter } from "next/navigation"
+import SCREENS from "@/route/router"
+import Link from "next/link"
+import NavLink from "@/components/hooks/NavLink/NavLink"
 
 // i18n
-import useTranslation from "next-translate/useTranslation";
-import I18nProvider from "next-translate/I18nProvider";
-import common from "@/locales/it/common.json";
+import useTranslation from "next-translate/useTranslation"
+import I18nProvider from "next-translate/I18nProvider"
+import common from "@/locales/it/common.json"
 
 // componenti
-import Hero from "@/components/hooks/Hero/Hero";
-import CardEventsMobile from "@/components/hooks/CardEvents/CardEventsMobile";
-import CardArticle from "@/components/ui/CardArticle/CardArticle";
-import SkeletonCard from "@/components/ui/skeleton/skeletonCard/SkeletonCard";
-import SkeletonSquare from "@/components/ui/skeleton/SkeletonSquare/SkeletonSquare";
+import Hero from "@/components/hooks/Hero/Hero"
+import CardEventsMobile from "@/components/hooks/CardEvents/CardEventsMobile"
+import CardArticle from "@/components/ui/CardArticle/CardArticle"
+import SkeletonCard from "@/components/ui/skeleton/skeletonCard/SkeletonCard"
+import SkeletonSquare from "@/components/ui/skeleton/SkeletonSquare/SkeletonSquare"
 
-import JoinUs from "@/components/hooks/joinUsBbox/JoinUsBox";
-import CustomButton from "@/components/ui/buttons/CustomButton/CustomButton";
-import Layout from "@/components/ui/Layout/Layout";
+import JoinUs from "@/components/hooks/joinUsBbox/JoinUsBox"
+import CustomButton from "@/components/ui/buttons/CustomButton/CustomButton"
+import Layout from "@/components/ui/Layout/Layout"
 
 // style
-import styles from "@/styles/Home.module.scss";
+import styles from "@/styles/Home.module.scss"
 
 // redux
-import { useSelector } from "react-redux";
+import { useSelector } from "react-redux"
 
 //mui
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Typography, Skeleton } from "@mui/material";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp"
+import { Typography, Skeleton } from "@mui/material"
 
 //type
-import { events, article, social, color } from "@/utils/type";
+import { events, article, social, color } from "@/utils/type"
 
 //api
-import { getHome } from "@/services/api/homeApi";
-import { getEvents } from "@/services/api/eventApi";
-import { getArticles } from "@/services/api/articleApi";
-import { getSocial } from "@/services/api/socialApi";
-import { getCustomization } from "@/services/api/customizationApi";
-import { getUserApi } from "@/services/api/authApi";
+import { getHome } from "@/services/api/homeApi"
+import { getEvents } from "@/services/api/eventApi"
+import { getArticles } from "@/services/api/articleApi"
+import { getSocial } from "@/services/api/socialApi"
+import { getCustomization } from "@/services/api/customizationApi"
+import { getUserApi } from "@/services/api/authApi"
 
 // utils
-import { convertDate } from "@/utils/convertDate";
-import { hexToRGB } from "@/utils/hexToRGB";
-import { checkEventDate } from "@/utils/checkForm";
+import { convertDate } from "@/utils/convertDate"
+import { hexToRGB } from "@/utils/hexToRGB"
+import { checkEventDate } from "@/utils/checkForm"
 
 //asstets
-import logo from "@/images/giraffeImg.png";
+import logo from "@/images/giraffeImg.png"
 
 //cookies
-import { getCookie, setCookie } from "cookies-next";
-import Image from "next/image";
+import { getCookie, setCookie } from "cookies-next"
+import Image from "next/image"
 
 //interfaces
 interface State {
-  articlesArray: Array<article> | null;
-  homeData: any;
-  eventArray: Array<events> | null;
-  socialFrame: social | null;
+  articlesArray: Array<article> | null
+  homeData: any
+  eventArray: Array<events> | null
+  socialFrame: social | null
   isLoaded: {
-    homeLoaded: boolean;
-    eventLoaded: boolean;
-    articleLoaded: boolean;
-    socialLoaded: boolean;
-  };
+    homeLoaded: boolean
+    eventLoaded: boolean
+    articleLoaded: boolean
+    socialLoaded: boolean
+  }
 }
 
 interface Props {
-  homeData: any;
-  eventData: any;
-  articleData: any;
-  socialData: any;
+  homeData: any
+  eventData: any
+  articleData: any
+  socialData: any
 }
 
 // inizializzazione
@@ -89,7 +89,7 @@ const initialState = {
     articleLoaded: false,
     socialLoaded: false,
   },
-};
+}
 
 const Home = ({
   homeData,
@@ -97,17 +97,17 @@ const Home = ({
   articleData,
   socialData,
 }: Props): JSX.Element => {
-  const { t }: any = useTranslation("common");
+  const { t }: any = useTranslation("common")
   const LANG = {
     dateFormat: t("dateFormat"),
     eventsTitle: t("titles.eventsTitle"),
     latestNews: t("home.latestNews"),
     history: t("home.history"),
-  };
+  }
 
-  const [state, setState] = useState<State>(initialState);
+  const [state, setState] = useState<State>(initialState)
 
-  const router: any = useRouter();
+  const router: any = useRouter()
 
   // const SOCIAL: Array<social> = useSelector(
   //   (state: any) => state.generalDuck.social
@@ -119,36 +119,36 @@ const Home = ({
 
   const SOCIAL: Array<social> = useSelector(
     (state: any) => state.generalDuck.social
-  );
+  )
 
   const PALETTE: Array<color> = useSelector(
     (state: any) => state.generalDuck.palette
-  );
+  )
 
   useEffect(() => {
-    fetchDatas();
-  }, []);
+    fetchDatas()
+  }, [])
 
   const fetchDatas = async (): Promise<void> => {
     let home: boolean = false,
       event: boolean = false,
       article: boolean = false,
-      social: boolean = false;
-    let homeResponse: any = await getHome();
-    if (homeResponse.status === 200) home = true;
-    let eventResponse: any = await getEvents();
-    if (eventResponse.status === 200) event = true;
-    let articleResponse: any = await getArticles();
-    if (articleResponse.status === 200) article = true;
-    if (SOCIAL.length > 0) social = true;
+      social: boolean = false
+    let homeResponse: any = await getHome()
+    if (homeResponse.status === 200) home = true
+    let eventResponse: any = await getEvents()
+    if (eventResponse.status === 200) event = true
+    let articleResponse: any = await getArticles()
+    if (articleResponse.status === 200) article = true
+    if (SOCIAL.length > 0) social = true
 
     let socialHome: Array<social> = SOCIAL.filter((social: social) => {
-      return social.homepageOn == true;
-    });
+      return social.homepageOn == true
+    })
 
-    let today: Date = new Date();
+    let today: Date = new Date()
 
-    let future: Array<events> = checkEventDate(eventResponse.data, today);
+    let future: Array<events> = checkEventDate(eventResponse.data, today)
 
     setState({
       ...state,
@@ -162,12 +162,12 @@ const Home = ({
         articleLoaded: article,
         socialLoaded: social,
       },
-    });
-  };
+    })
+  }
 
   const goToArticle = (id: number, cat_id: number) => (): void => {
-    router.push(SCREENS.article + `/${id}`, { state: { cat_id: cat_id } });
-  };
+    router.push(SCREENS.article + `/${id}`, { state: { cat_id: cat_id } })
+  }
 
   const mapArticles = (item: article, key: number): JSX.Element | undefined => {
     if (key < 5) {
@@ -181,14 +181,14 @@ const Home = ({
             image={item.coverContent}
           />
         </div>
-      );
+      )
     }
-    return;
-  };
+    return
+  }
 
   const goToEvents = (): void => {
-    router.push(SCREENS.events);
-  };
+    router.push(SCREENS.events)
+  }
 
   // map degli eventi
   const mapEvents = (event: events, key: number): JSX.Element | undefined => {
@@ -206,10 +206,10 @@ const Home = ({
             opaque={false}
           />
         </article>
-      );
+      )
     }
-    return;
-  };
+    return
+  }
   return (
     <>
       <Layout>
@@ -328,17 +328,17 @@ const Home = ({
         </main>
       </Layout>
     </>
-  );
-};
-export default Home;
+  )
+}
+export default Home
 export const getServerSideProps = async (ctx: any) => {
   const [socialResponse, customizationResponse]: Array<any> = await Promise.all(
     [getSocial(), getCustomization()]
-  );
+  )
   return {
     props: {
       socialData: socialResponse,
       customizationData: customizationResponse.data,
     },
-  };
-};
+  }
+}
