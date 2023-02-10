@@ -1,10 +1,5 @@
 .articleCardContainer {
   display: flex;
-  .image {
-    height: 80px;
-    width: 80px;
-    object-fit: cover;
-  }
   .titleContainer {
     padding-left: 10px;
     display: flex;
@@ -16,10 +11,6 @@
 @media screen and (min-width: 768px) {
   .articleCardContainer {
     flex-direction: column;
-    .image {
-      height: 120px;
-      width: 120px;
-    }
     .titleContainer {
       padding-left: 0px;
     }
@@ -29,10 +20,6 @@
 @media screen and (min-width: 1500px) {
   .articleCardContainer {
     flex-direction: row;
-    .image {
-      height: 150px;
-      width: 150px;
-    }
     .titleContainer {
       padding-left: 20px;
       .cardTitle {

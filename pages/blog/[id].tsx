@@ -89,7 +89,13 @@ const Article: FC = (props: any) => {
   }
 
   const goToArticle = (id: number, cat_id: number) => (): void => {
-    // router.push(SCREENS.article + `/${id}`, { state: { cat_id: cat_id } })
+    router.push(
+      {
+        pathname: `/blog/${encodeURIComponent(id)}`,
+        query: { cat_id: cat_id },
+      },
+      `/blog/${encodeURIComponent(id)}`
+    )
   }
 
   const mappingParagraph = (el: contentArticle, key: number): JSX.Element => {
@@ -157,7 +163,7 @@ const Article: FC = (props: any) => {
               <section>{state.article!.content.map(mappingParagraph)}</section>
               <Typography variant="h3">{LANG.relatedArticles}</Typography>
               <section className={styles.correlatedArticles}>
-                {/* {state.localArray.map(mappingCorrelated)} */}
+                {state.localArray?.map(mappingCorrelated)}
               </section>
             </article>
           </section>

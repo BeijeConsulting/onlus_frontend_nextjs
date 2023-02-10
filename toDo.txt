@@ -1,0 +1,3 @@
+- trasformare chiamate non autenticate in static side
+- sistemare colori + prendere ultimi tre elementi da array palette
+
