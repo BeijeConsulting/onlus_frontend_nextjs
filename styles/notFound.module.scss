@@ -1,28 +1,28 @@
 @import "./common.scss";
 
-#confirmDonation {
+.notFound {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  .confirmDonationContainer {
+  .notFoundContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
-  .confirmIcon {
+  .foundTitleColor {
+    color: $secondary;
+  }
+  .errorIcon {
     width: 100px;
     height: 100px;
     color: $primary;
   }
-  .amount {
-    padding-bottom: 20px;
-  }
 }
 
 @media (min-width: 992px) {
-  .confirmDonationContainer {
+  .notFoundContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;

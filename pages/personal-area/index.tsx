@@ -97,7 +97,7 @@ const PersonalArea = ({
 
   async function fetchDatas(): Promise<void> {
     const user: any = getCookie("userOnlus");
-    const userId = JSON.parse(user) || null;
+    const userId = user !== undefined ? JSON.parse(user) : null;
     const [resultPersonalData, resultOwnDonation, resultOwnEvents]: Array<any> =
       await Promise.all([
         getPersonalDatas(userId.userId),
@@ -188,20 +188,18 @@ const PersonalArea = ({
 export default PersonalArea;
 export const getServerSideProps = async ({ req, res }: any) => {
   const user: any = getCookie("userOnlus", { req, res });
-  //const userId: any = context.req.cookies["userId"];
-  //const userId = JSON.parse(user) || null;
-  // const [resultPersonalData, resultOwnDonation, resultOwnEvents]: Array<any> =
-  //   await Promise.all([
-  //     getPersonalDatas(44),
-  //     getAllDonation(),
-  //     getUserEventsApi(),
-  //   ]);
-  console.log("server", user);
+  const userParsed: any = JSON.parse(user);
+  const userIsLogged: any = userParsed?.isLoggedIn || false;
+  console.log(userIsLogged);
+  if (userIsLogged === false) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
   return {
-    props: {
-      // personalData: resultPersonalData,
-      // ownDonation: resultOwnDonation,
-      // ownEvents: resultOwnEvents,
-    },
+    props: {},
   };
 };

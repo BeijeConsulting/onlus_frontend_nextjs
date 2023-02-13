@@ -78,6 +78,13 @@ const MyInfoSection: FC<InfoProps> = (props): ReactElement => {
     errorPassword: t("login.errorPassword"),
     confirmPassword: t("login.confirmPassword"),
     errorConfirmPassword: t("login.errorConfirmPassword"),
+    phone: t("login.phone"),
+    errorPhone: t("login.errorPhone"),
+    language: t("login.language"),
+    disableAccount: t("buttons.disableAccount"),
+    modifyButton: t("buttons.modifyButton"),
+    disableSentence: t("personalArea.disableSentence"),
+    confirm: t("confirm"),
   };
 
   const router: any = useRouter();
@@ -316,17 +323,17 @@ const MyInfoSection: FC<InfoProps> = (props): ReactElement => {
           <InputBox
             defaultValue={state.phoneNumber}
             callbackChange={setPhoneNumber}
-            label={t("login.phone")}
+            label={LANG.phone}
             type={"text"}
             notValid={state.errorPhoneNumber}
-            errorLabel={t("form.errorPhone")}
+            errorLabel={LANG.errorPhone}
           />
           <SelectBox
-            label={t("login.language")}
+            label={LANG.language}
             items={lngs}
             callbackChange={setLanguage}
             // defaultValue={
-            //   i18n.language === "it" ? t("login.italian") : t("login.english")
+            //   i18n.language === "it" ? LANG.italian : LANG.english
             // }
             defaultValue={"it"}
           />
@@ -335,14 +342,14 @@ const MyInfoSection: FC<InfoProps> = (props): ReactElement => {
           className={`inputBox ${styles.myInputContainer} ${styles.buttonsContainer}`}
         >
           <CustomButton
-            label={t("buttons.disableAccount")}
+            label={LANG.disableAccount}
             isDisable={false}
             size={"big"}
             colorType="primary"
             callback={openModal}
           />
           <CustomButton
-            label={t("buttons.modifyButton")}
+            label={LANG.modifyButton}
             isDisable={state.buttonDisabled}
             size={"big"}
             colorType="primary"
@@ -352,10 +359,10 @@ const MyInfoSection: FC<InfoProps> = (props): ReactElement => {
           <GenericModal open={state.isOpen} callback={openModal}>
             <div className={styles.childrenModal}>
               <Typography variant="body1">
-                {t("personalArea.disableSentence")}
+                {LANG.disableSentence}
               </Typography>
               <CustomButton
-                label={t("confirm")}
+                label={LANG.confirm}
                 isDisable={false}
                 size={"big"}
                 colorType="secondary"

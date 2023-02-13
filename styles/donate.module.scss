@@ -1,6 +1,6 @@
 @import "../styles/common.scss";
 
-#donate {
+.donate {
   form {
     margin-bottom: 20px;
   }
@@ -22,8 +22,13 @@
   }
 }
 
+.inputBox {
+  display: grid;
+  gap: 10px;
+}
+
 @media (min-width: 768px) {
-  main#donate {
+  .donate {
     .titleDonate {
       font-size: 70px;
       font-weight: 600;
@@ -38,5 +43,9 @@
   }
   .form {
     width: 50vw;
+  }
+  .inputBox {
+    display: flex;
+    justify-content: stretch;
   }
 }
