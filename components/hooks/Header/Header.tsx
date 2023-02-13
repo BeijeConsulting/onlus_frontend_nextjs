@@ -46,6 +46,7 @@ import { color } from "../../../utils/type";
 
 // img
 import logo from "@/images/giraffeImg.jpg";
+import useLogout from "@/utils/useLogout";
 
 interface HeaderProps {
   isHome?: boolean;
@@ -67,6 +68,7 @@ const initialState = {
 
 const Header: FC<HeaderProps> = (props) => {
   const [state, setState] = useState<State>(initialState);
+  const [handleLogout, isReady] = useLogout(1000);
   const dispatch: Function = useDispatch();
 
   const LOGO: any = useSelector((state: any) => state.generalDuck.logoContent);
@@ -161,14 +163,10 @@ const Header: FC<HeaderProps> = (props) => {
   };
 
   const logout = (): void => {
-    dispatch(setLoggedState(false));
-    dispatch(saveUserData({}));
-
-    sessionStorage.removeItem("userOnlus");
-    localStorage.removeItem("onlusRefreshToken");
-    localStorage.removeItem("onlusToken");
-
-    router.push(SCREENS.home);
+    handleLogout();
+    if (isReady) {
+      router.push(SCREENS.home);
+    }
   };
 
   const openModal = (): void => {
